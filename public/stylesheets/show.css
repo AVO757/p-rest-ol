@@ -1,0 +1,96 @@
+
+.Beachimg {
+    position: block;
+    width: 100%;
+    height: auto;
+}
+.grid {
+    display: grid;
+    grid-template-columns:5% 1fr 5%;
+    grid-template-rows: 50px 10% 1fr auto 75px;
+    grid-template-areas:
+    ". . ."
+    ". beachName ."
+    ". content ."
+    ". commentSection ."
+    ". . ."
+}
+
+.beachName {
+    grid-area: beachName;
+    text-align: center;
+    /* border: black solid 1px; */
+}
+
+.content {
+    grid-area: content;
+}
+
+.beachImage {
+    grid-area: beachImage;
+    display: block;
+    margin: 0 auto;
+    /* border: black solid 1px; */
+    
+}
+
+.beachDetails {
+    grid-area: beachDetails;
+    text-align: center;
+    /* border: black solid 1px; */
+    
+}
+
+.beachOptions {
+    grid-area: beachOptions;
+    /* border: black solid 1px; */
+}
+
+.commentSection {
+    grid-area: commentSection;
+    margin-top: 15px;
+    /* border: black solid 1px; */
+}
+
+.comments {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+    "commentText commentText"
+    "commentAuthor commentAuthor"
+    "commentOptions commentOptions";
+    padding: 0 10px;
+    padding-top: 2px;
+}
+
+.commentText {
+    grid-area: commentText;
+    font-style: italic;
+    margin: 0;
+}
+
+.commentAuthor {
+    grid-area: commentAuthor;
+    
+}
+
+.commentOptions {
+    grid-area: commentOptions;
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    "commentEdit commentDelete"
+}
+
+.commentEdit {
+    justify-self: start;
+}
+
+/* Larger Screen*/
+/* @media(min-width:700px) {
+    .grid {
+        display: none;
+    }
+} */

@@ -1,0 +1,19 @@
+<%include ../partials/header %>
+
+<h1><%=beach.name%></h1>
+
+<form action="/beaches/<%=beach._id%>?_method=PUT" method="POST">
+    <input type="text" name="beach[name]" placeholder="Name" value="<%=beach.name%>">
+    <input type="text" name="beach[image]" name="image" placeholder="Image URL" value="<%=beach.image%>">
+    <input type="text" name="beach[location]" placeholder="Location" value="<%=beach.location%>">
+    <input type="text" name="beach[description]" placeholder="Description" value="<%=beach.description%>">
+    <input type="submit">
+</form>
+
+<a href="/beaches">View all beaches</a>
+
+<form action="/beaches/<%=beach._id%>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete">
+</form>
+
+<%include ../partials/footer %>

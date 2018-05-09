@@ -1,0 +1,13 @@
+<%include ../partials/header %>
+
+<form action="/beaches" method="POST">
+    <input type="text" name="beach[name]" placeholder="Name">
+    <input type="text" name="beach[image]" name="image" placeholder="Image URL">
+    <input type="text" name="beach[location]" placeholder="Location">
+    <input type="text" name="beach[description]" placeholder="Description">
+    <input type="submit">
+</form>
+
+<a href="/beaches">View all beaches</a>
+
+<%include ../partials/footer %>

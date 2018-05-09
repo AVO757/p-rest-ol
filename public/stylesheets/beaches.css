@@ -1,0 +1,70 @@
+
+
+.content {
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
+    grid-template-rows: 10% 5% 1fr;
+    grid-template-areas:
+    "header header header"
+    "sub-header sub-header sub-header"
+    ". beaches .";
+}
+
+.header {
+    margin-top: 20px;
+    grid-area: header;
+    text-align: center;
+}
+
+hr {
+    margin: 0 30%;
+}
+
+.sub-header {
+    grid-area: sub-header;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.beaches {
+    grid-area: beaches;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 1em;
+}
+
+.beach {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin-bottom: 10px;
+}
+
+.beach .image {
+
+}
+
+.beach .detail {
+
+}
+
+.beach .link {
+
+}
+
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+p .location {
+    margin: 0;
+}
+
+.beach a:hover {
+    text-decoration: none;
+}
