@@ -1,6 +1,7 @@
 var express =       require("express"),
 app         =       express(),
 bodyParser  =       require("body-parser"),
+flash       =       require("connect-flash")
 methodOverride  =   require("method-override"),
 mongoose    =       require("mongoose"),
 passport    =       require("passport"),
@@ -23,7 +24,8 @@ mongoose.connect("mongodb://localhost/project_rest");
 app.use(bodyParser.urlencoded({extended: true}));
 // Method-Override
 app.use(methodOverride("_method"));
-
+// flash messages
+app.use(flash());
 
 // PASSPORT CONFIGURATION
 /////////////////////////////////////////////////
@@ -39,9 +41,12 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // MIDDLEWARE
-// Add currentUser (whether the user has logged in) to all routres
+// Add currentUser (whether the user has logged in) to all routres and templates
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
+    // flash message
+    res.locals.error = req.flash("error")
+    res.locals.success = req.flash("success")
     next();
 });
 

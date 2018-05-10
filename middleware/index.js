@@ -11,17 +11,20 @@ middlewareObj.checkBeachOwnership = function(req, res, next) {
     if(req.isAuthenticated()) {
         Beach.findById(req.params.id, function(err, foundBeach) {
             if(err) {
+                req.flash("error", "Beach not found")
                 res.redirect("back");
             } else {
                 // does the user own the post?
                 if(foundBeach.author.id.equals(req.user._id)) {
                     next();
                 } else {
+                    req.flash("error", "You do not own this beach post")
                     res.redirect("back");
                 }
             }
         });
     } else {
+        req.flash("error", "Please login first")
         res.redirect("back");
     }
 };
@@ -40,11 +43,13 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
                 if(foundComment.author.id.equals(req.user._id)) {
                     next();
                 } else {
+                    req.flash("error", "You do not own the comment post")
                     res.redirect("back");
                 }
             }
         });
     } else {
+        req.flash("error", "Please login first")
         res.redirect("back");
     }
 };
@@ -55,6 +60,8 @@ middlewareObj.isLoggedIn = function(req, res, next) {
     if(req.isAuthenticated()) {
         return next();
     }
+    //flash message (add it before you redirect)
+    req.flash("error", "Please Login First")
     res.redirect("/login");
 };
 

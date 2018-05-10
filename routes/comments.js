@@ -36,6 +36,7 @@ app.post("/beaches/:id/comments", middleware.isLoggedIn, function(req, res) {
                     comment.save();
                     beach.comments.push(comment);
                     beach.save();
+                    req.flash("success", "Successfully added comment")
                     res.redirect("/beaches/" + beach._id);
                 }
             });
@@ -71,6 +72,7 @@ app.delete("/beaches/:beach_id/comments/:comment_id", middleware.checkCommentOwn
         if(err) {
             res.redirect("back");
         } else {
+            req.flash("error", "Comment deleted")
             res.redirect("/beaches/" + req.params.beach_id);
         }
     });

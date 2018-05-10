@@ -84,6 +84,7 @@ app.delete("/beaches/:id", middleware.checkBeachOwnership, function(req, res) {
         if(err) {
             console.log(err);
         } else {
+            req.flash("success", "Beach deleted")
             res.redirect("/beaches");
         }
     });
