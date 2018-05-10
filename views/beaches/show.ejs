@@ -9,7 +9,7 @@
 <body>
 
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
             <a class="navbar-brand" href="/">Project REST</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -29,6 +29,25 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <% if(!currentUser) {%>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Sign Up</a>
+                        </li>
+                        <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Signed in as
+                                <%= currentUser.username %>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    <% } %>
                 </ul>
             </div>
         </nav>

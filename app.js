@@ -5,7 +5,12 @@ methodOverride  =   require("method-override"),
 mongoose    =       require("mongoose"),
 passport    =       require("passport"),
 LocalStrategy =       require("passport-local"),
-User        =       require("./models/user");
+User        =       require("./models/user"),
+deleteData =        require("./deleteData");
+
+
+// delete beaches and comments data
+// deleteData();
 
 // APP CONFIG
 /////////////////////////////////////////////////
@@ -54,6 +59,6 @@ app.use(indexRoutes);
 
 
 /////////////////////////////////////////////////
-app.listen(process.env.PORT, process.env.IP, function() {
+app.listen(3000, function() {
     console.log("server started");
 });
