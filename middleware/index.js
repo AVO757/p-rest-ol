@@ -10,16 +10,16 @@ middlewareObj.checkBeachOwnership = function(req, res, next) {
     // is logged in?
     if(req.isAuthenticated()) {
         Beach.findById(req.params.id, function(err, foundBeach) {
-            if(err) {
+            if(err || !foundBeach) {
                 req.flash("error", "Beach not found")
-                res.redirect("back");
+                res.redirect("/beaches");
             } else {
                 // does the user own the post?
                 if(foundBeach.author.id.equals(req.user._id)) {
                     next();
                 } else {
                     req.flash("error", "You do not own this beach post")
-                    res.redirect("back");
+                    res.redirect("/beach");
                 }
             }
         });
@@ -36,7 +36,8 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
     // is logged in?
     if(req.isAuthenticated()) {
         Comment.findById(req.params.comment_id, function(err, foundComment) {
-            if(err) {
+            if(err || !foundComment) {
+                req.flash("error", "Comment not found")
                 res.redirect("back");
             } else {
                 // does the user own the post?

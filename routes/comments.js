@@ -50,7 +50,7 @@ app.get("/beaches/:beach_id/comments/:comment_id/edit", middleware.checkCommentO
         if (err) {
             console.log(err);
         } else {
-            res.render("comments/edit", {beach_id: req.params.beach_id, comment: foundComment});
+            res.render("comments/edit", { beach_id: req.params.beach_id, comment: foundComment });
         }
     });
 });
@@ -68,14 +68,20 @@ app.put("/beaches/:beach_id/comments/:comment_id", middleware.checkCommentOwners
 
 // Delete comment
 app.delete("/beaches/:beach_id/comments/:comment_id", middleware.checkCommentOwnership, function(req, res) {
-    Comment.findByIdAndRemove(req.params.comment_id, function(err) {
-        if(err) {
-            res.redirect("back");
-        } else {
-            req.flash("error", "Comment deleted")
-            res.redirect("/beaches/" + req.params.beach_id);
+    Beach.findById(req.params.id, function(err, foundBeach) {
+        if(err || !foundBeach) {
+            req.flash("error", "No beach found");
+            return res.redirect("back");
         }
-    });
+        Comment.findByIdAndRemove(req.params.comment_id, function (err) {
+            if (err) {
+                res.redirect("back");
+            } else {
+                req.flash("error", "Comment deleted")
+                res.redirect("/beaches/" + req.params.beach_id);
+            }
+        });
+    })
 });
 
 

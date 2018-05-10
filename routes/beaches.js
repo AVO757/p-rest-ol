@@ -51,8 +51,9 @@ app.post("/beaches", middleware.isLoggedIn, function(req, res) {
 // Show detailed beach
 app.get("/beaches/:id", function(req, res) {
     Beach.findById(req.params.id).populate("comments").exec(function(err, foundBeach) {
-        if(err) {
-            console.log(err);
+        if(err || !foundBeach) {
+            req.flash("error", "Beach not found");
+            res.redirect("back");
         } else {
             res.render("beaches/show", {beach: foundBeach});
         }
