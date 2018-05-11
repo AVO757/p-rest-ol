@@ -73,6 +73,7 @@ app.put("/beaches/:id", middleware.checkBeachOwnership, function(req, res) {
     Beach.findByIdAndUpdate(req.params.id, req.body.beach, function(err, updatedBeach) {
         if(err) {
             console.log(err);
+            res.redirect("/beaches/" + req.params.id)
         } else {
             res.redirect("/beaches/" + req.params.id);
         }
@@ -84,6 +85,7 @@ app.delete("/beaches/:id", middleware.checkBeachOwnership, function(req, res) {
     Beach.findByIdAndRemove(req.params.id, function(err) {
         if(err) {
             console.log(err);
+            res.redirect("/beaches");
         } else {
             req.flash("success", "Beach deleted")
             res.redirect("/beaches");

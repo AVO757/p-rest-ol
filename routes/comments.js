@@ -45,43 +45,39 @@ app.post("/beaches/:id/comments", middleware.isLoggedIn, function(req, res) {
 });
 
 // Edit comment
-app.get("/beaches/:beach_id/comments/:comment_id/edit", middleware.checkCommentOwnership, function(req, res) {
+app.get("/beaches/:id/comments/:comment_id/edit", middleware.checkCommentOwnership, function(req, res) {
     Comment.findById(req.params.comment_id, function (err, foundComment) {
         if (err) {
             console.log(err);
+            res.redirect("back");
         } else {
-            res.render("comments/edit", { beach_id: req.params.beach_id, comment: foundComment });
+            res.render("comments/edit", { beach_id: req.params.id, comment: foundComment });
         }
     });
 });
 
 // Update comment
-app.put("/beaches/:beach_id/comments/:comment_id", middleware.checkCommentOwnership, function(req, res) {
+app.put("/beaches/:id/comments/:comment_id", middleware.checkCommentOwnership, function(req, res) {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment) {
         if(err) {
             console.log(err);
+            res.redirect("back");
         } else {
-            res.redirect( "/beaches/" + req.params.beach_id);
+            res.redirect( "/beaches/" + req.params.id);
         }
     });
 });
 
 // Delete comment
-app.delete("/beaches/:beach_id/comments/:comment_id", middleware.checkCommentOwnership, function(req, res) {
-    Beach.findById(req.params.id, function(err, foundBeach) {
-        if(err || !foundBeach) {
-            req.flash("error", "No beach found");
-            return res.redirect("back");
+app.delete("/beaches/:id/comments/:comment_id", middleware.checkCommentOwnership, function(req, res) {
+    Comment.findByIdAndRemove(req.params.comment_id, function (err) {
+        if (err) {
+            res.redirect("back");
+        } else {
+            req.flash("error", "Comment deleted")
+            res.redirect("/beaches/" + req.params.beach_id);
         }
-        Comment.findByIdAndRemove(req.params.comment_id, function (err) {
-            if (err) {
-                res.redirect("back");
-            } else {
-                req.flash("error", "Comment deleted")
-                res.redirect("/beaches/" + req.params.beach_id);
-            }
-        });
-    })
+    });
 });
 
 

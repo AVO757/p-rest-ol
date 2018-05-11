@@ -53,6 +53,20 @@
         </nav>
     </div>
 
+    <!-- flash messages -->
+    <div class="container">
+        <% if(error && error.length > 0) {%>
+            <div class="alert alert-warning" role="alert">
+                <%=error%>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0) {%>
+            <div class="alert alert-success" role="alert">
+                <%=success%>
+            </div>
+        <% } %>
+    </div>
+
 
     <div class="grid">
         <div class="beachName">
