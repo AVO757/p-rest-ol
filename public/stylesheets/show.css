@@ -7,11 +7,13 @@
 .grid {
     display: grid;
     grid-template-columns:5% 1fr 5%;
-    grid-template-rows: 50px 10% 1fr auto 75px;
+    grid-template-rows: 50px 10% 1fr auto 10px auto 75px;
     grid-template-areas:
     ". . ."
     ". beachName ."
     ". content ."
+    ". map ."
+    ". . ."
     ". commentSection ."
     ". . ."
 }
@@ -43,13 +45,14 @@
 
 .beachOptions {
     grid-area: beachOptions;
+    margin-top: 10px;
     /* border: black solid 1px; */
 }
 
 .commentSection {
     grid-area: commentSection;
-    margin-top: 15px;
-    /* border: black solid 1px; */
+    margin-top: 0px;
+    border: 1px solid black;
 }
 
 .comments {
@@ -86,6 +89,14 @@
 
 .commentEdit {
     justify-self: start;
+}
+
+/* Google Maps */
+#map {
+    grid-area: map;
+    height: 250px;
+    width: 100%;
+    margin-top: 20px;
 }
 
 /* Larger Screen*/

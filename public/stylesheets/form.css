@@ -1,0 +1,21 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10fr 1fr;
+    grid-template-areas:
+    "form"
+    "option"
+}
+
+.form {
+    grid-area: form;
+}
+
+.option {
+    grid-area: option;
+}
+
+
+label {
+    font-weight: 500;
+}

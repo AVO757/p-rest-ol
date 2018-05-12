@@ -2,6 +2,17 @@ var express     = require("express"),
 app          = express.Router(),
 Beach           = require("../models/beaches"),
 middleware      = require("../middleware");
+// Google Maps
+var NodeGeocoder = require('node-geocoder');
+
+var options = {
+    provider: 'google',
+    httpAdapter: 'https',
+    apiKey: process.env.GEOCODER_API_KEY,
+    formatter: null
+};
+
+var geocoder = NodeGeocoder(options);
 
 
 // BEACHES
@@ -31,19 +42,29 @@ app.post("/beaches", middleware.isLoggedIn, function(req, res) {
     var name = req.body.beach.name;
     var image = req.body.beach.image;
     var desc = req.body.beach.description;
-    var location = req.body.beach.location;
     var author = {
         id: req.user._id,
         username: req.user.username
     };
-    var newBeach = {name: name, image: image, description: desc, location: location, author: author};
-    Beach.create(newBeach, function(err, newBeach) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.redirect("beaches");
+
+    geocoder.geocode(req.body.beach.location, function(err, data) {
+        if (err || !data.length) {
+            req.flash("error", "Invalid address");
+            return res. redirect("back");
         }
-    });
+        var lat = data[0].latitude;
+        var lng = data[0].longitude;
+        var location = data[0].formattedAddress;
+        var newBeach = { name: name, image: image, description: desc, location: location, author: author, lat: lat, lng: lng };
+        // Create a new beach and save to DB
+        Beach.create(newBeach, function (err, newBeach) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.redirect("beaches");
+            }
+        });
+    })
 });
 
 
@@ -70,13 +91,24 @@ app.get("/beaches/:id/edit", middleware.checkBeachOwnership, function(req, res) 
 
 // Update beach
 app.put("/beaches/:id", middleware.checkBeachOwnership, function(req, res) {
-    Beach.findByIdAndUpdate(req.params.id, req.body.beach, function(err, updatedBeach) {
-        if(err) {
-            console.log(err);
-            res.redirect("/beaches/" + req.params.id)
-        } else {
-            res.redirect("/beaches/" + req.params.id);
+    geocoder.geocode(req.body.beach.location, function(err, data) {
+        if (err || !data.length) {
+            req.flash("error", "Invalid address");
+            return res.redirect("back");
         }
+        req.body.beach.lat = data[0].latitude;
+        req.body.beach.lng = data[0].longitude;
+        req.body.beach.location = data[0].formattedAddress;
+
+        Beach.findByIdAndUpdate(req.params.id, req.body.beach, function (err, updatedBeach) {
+            if (err) {
+                console.log(err);
+                req.flash("error", err.message);
+                res.redirect("/beaches/" + req.params.id);
+            } else {
+                res.redirect("/beaches/" + req.params.id);
+            }
+        });
     });
 });
 
