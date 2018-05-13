@@ -15,7 +15,7 @@
     ". map ."
     ". . ."
     ". commentSection ."
-    ". . ."
+    ". . .";
 }
 
 .beachName {
@@ -45,8 +45,28 @@
 
 .beachOptions {
     grid-area: beachOptions;
-    margin-top: 10px;
-    /* border: black solid 1px; */
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    ". btn-success"
+    "btn-danger btn-warning";
+    grid-row-gap: 1em;
+    margin-top: 10px; 
+}
+
+.beachOptions .btn-success {
+    grid-area: btn-success;
+    justify-self: end;
+}
+
+.beachOptions .btn-danger {
+    grid-area: btn-danger;
+}
+
+.beachOptions .btn-warning {
+    grid-area: btn-warning;
+    justify-self: end;
 }
 
 .commentSection {
@@ -84,7 +104,7 @@
     grid-template-columns: 9fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas:
-    "commentEdit commentDelete"
+    "commentEdit commentDelete";
 }
 
 .commentEdit {

@@ -89,15 +89,14 @@
                         <input class="btn btn-danger" type="submit" value="Delete beach">
                     </form>
                 <% } %>
-                <a class="btn btn-info" href="/beaches/<%=beach._id%>/comments/new">Add comment</a>
-                <a class="btn btn-warning float-right" href="/beaches">Go Back</a>
+                <a class="btn btn-warning" href="/beaches">Go Back</a>
             </div>
         </div>
 
         <div id="map"></div>
 
         <div class="commentSection card">
-            <h5 class="card-header">Leave here your thoughts</h5>
+            <h5 class="card-header">Leave here your thoughts<a class="btn btn-info float-right" href="/beaches/<%=beach._id%>/comments/new">Add comment</a></h5>
             <%beach.comments.forEach(function(comment) {%>
                 <div class="comments card-body">
                     <p class="commentText"><%=comment.text%></p>
