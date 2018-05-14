@@ -1,0 +1,152 @@
+
+body {
+    text-align: center;
+    
+}
+
+.grid {
+    display: grid;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 5% 1fr 1fr 1fr 5%;
+    grid-template-rows: auto;
+    grid-gap: 1em;
+    grid-template-areas:
+    "header header header header header"
+    ". text-editors languages front-end-framework ."
+    ". server-side-language server-side-framework database ."
+    ". cloud-hosting extra . ."
+    "footer footer footer footer footer";
+    background-color: #1f3050;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 10%;
+}
+
+.header {
+    grid-area: header;
+    padding: 5%;
+    color: #27eba7;
+}
+
+
+.text-editors {
+    grid-area: text-editors;
+    border-radius: 5px;
+    border: 1px solid #add7ff;
+}
+
+.text-editors h4 {
+    color: #df4576;
+}
+
+.text-editors p {
+    color: #add7ff;
+    margin:0;
+}
+
+.languages {
+    grid-area: languages;
+    border-radius: 5px;
+    border: 1px solid #add7ff;
+}
+
+.languages h4 {
+    color: #df4576;
+}
+
+.languages p {
+    color: #add7ff;
+    margin:0;
+}
+
+.front-end-framework {
+    grid-area: front-end-framework;
+    border: 1px solid #add7ff;
+    border-radius: 5px;
+}
+
+.front-end-framework h4 {
+    color: #df4576;
+}
+
+.front-end-framework p {
+    color: #add7ff;
+    margin:0;
+}
+
+.server-side-language {
+    grid-area: server-side-language;
+    border-radius: 5px;
+    border: 1px solid #add7ff;
+}
+
+.server-side-language h4 {
+    color: #27eba7;
+}
+
+.server-side-language p {
+    color: #add7ff;
+    margin:0;
+}
+
+.server-side-framework {
+    grid-area: server-side-framework;
+    border-radius: 5px;
+    border: 1px solid #add7ff;
+}
+
+.server-side-framework h4 {
+    color: #27eba7;
+}
+
+.server-side-framework p {
+    color: #add7ff;
+    margin:0;
+}
+
+.database {
+    grid-area: database;
+    border-radius: 5px;
+    border: 1px solid #add7ff;
+}
+
+.database h4 {
+    color: #27eba7;
+}
+
+.database p {
+    color: #add7ff;
+    margin:0;
+}
+
+.cloud-hosting {
+    grid-area: cloud-hosting;
+    border-radius: 5px;
+    border: 1px solid #add7ff;
+}
+
+.cloud-hosting h4 {
+    color: #df4576;
+}
+
+.cloud-hosting p {
+    color: #add7ff;
+    margin:0;
+}
+
+.extra {
+    grid-area: extra;
+    border-radius: 5px;
+    border: 1px solid #add7ff;
+}
+
+.extra h4 {
+    color: #df4576;
+}
+
+.extra p {
+    color: #add7ff;
+    margin:0;
+}
