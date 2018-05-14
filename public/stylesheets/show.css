@@ -1,4 +1,6 @@
-
+body {
+    font-family: 'Rancho', cursive;
+}
 .Beachimg {
     position: block;
     width: 100%;
