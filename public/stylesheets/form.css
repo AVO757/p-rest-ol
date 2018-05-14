@@ -1,3 +1,7 @@
+body {
+    font-family: 'Rancho', cursive;
+}
+
 .grid {
     display: grid;
 }
@@ -21,9 +25,6 @@
 }
 
 
-label {
-    font-weight: 500;
-}
 
 #flash {
     margin-top: 10px;
