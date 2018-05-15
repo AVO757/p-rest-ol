@@ -5,7 +5,10 @@
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/show.css">
     <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- override font from google map -->
+    <script src="/js/googleMap.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -59,7 +62,7 @@
     </div>
 
     <!-- flash messages -->
-    <div class="container">
+    <div class=" flash container">
         <% if(error && error.length > 0) {%>
             <div class="alert alert-warning" role="alert">
                 <%=error%>
@@ -74,44 +77,46 @@
 
 
     <div class="grid">
-        <div class="beachName">
-            <h1><%=beach.name%></h1>
-        </div>
-        <div class="content">
-            <div class="card">
-                <img class="beachImage card-img-top" src="<%=beach.image%>">
-                <div class="beachDetails card-body">
-                    <p><%=beach.location%></p>
-                    <p class="font-italic card-text"><%=beach.description%></p>
-                </div>
-            </div>
-
-            <div class="beachOptions">
-                <!-- hide buttons for unauthorized users -->
-                <% if(currentUser && beach.author.id.equals(currentUser._id)) {%>
-                    <a class="btn btn-success" href="/beaches/<%=beach._id%>/edit">Edit beach</a>
-                    <form action="/beaches/<%=beach._id%>?_method=DELETE" method="POST">
-                        <input class="btn btn-danger" type="submit" value="Delete beach">
-                    </form>
-                <% } %>
-                <a class="btn btn-warning" href="/beaches">Go Back</a>
-            </div>
+        <h1 class="beachName"><%=beach.name%></h1>
+        <div class="beachLeftContent card">
+            <img class="card-img-top" src="<%=beach.image%>">
+            <div class="card-subtitle card-body"><p><%=beach.location%></p></div>
         </div>
 
-        <div id="map"></div>
+        <div class="beachRightContent">
+            <div class="rounded" id="map"></div>
+        </div>
 
-        <div class="commentSection card">
-            <h5 class="card-header">Leave here your thoughts<a class="btn btn-info float-right" href="/beaches/<%=beach._id%>/comments/new">Add comment</a></h5>
+        <div class="beachDescription border rounded card-body bg-light">
+            <p><%=beach.description%></p>
+        </div>
+    
+    
+        <!-- hide buttons for unauthorized users -->
+        <div class="beachOptions">
+            <% if(currentUser && beach.author.id.equals(currentUser._id)) {%>
+                <a class="btn btn-success float-right" href="/beaches/<%=beach._id%>/edit">Edit beach</a>
+                <form action="/beaches/<%=beach._id%>?_method=DELETE" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete beach">
+                </form>
+            <% } %>
+        </div>
+        
+
+        <div class="beachCommentSection">
+            <h5 class="card-header">Leave here your thoughts
+                <a class="float-right" href="/beaches/<%=beach._id%>/comments/new">Add comment</a>
+            </h5>
             <%beach.comments.forEach(function(comment) {%>
-                <div class="comments card-body">
-                    <p class="commentText"><%=comment.text%></p>
-                    <p class="commentAuthor"><%=comment.author.username%></p>
+                <div class=" comment border rounded card-body">
+                    <p class=" commentDescription"><%=comment.text%></p>
+                    <p class=" commentAuthor"><%=comment.author.username%></p>
                     <div class="commentOptions">
                         <% if(currentUser && comment.author.id.equals(currentUser._id)) {%>
-                            <a class="commentEdit" href="/beaches/<%=beach._id%>/comments/<%=comment._id%>/edit">Edit</a>
                             <form action="/beaches/<%=beach._id%>/comments/<%=comment.id%>?_method=DELETE" method="POST">
-                                <input class="btn btn-danger commentDelete" type="submit" value="Delete">
+                                <input class="btn btn-danger float-right" type="submit" value="Delete">
                             </form>
+                            <a class="btn btn-warning" href="/beaches/<%=beach._id%>/comments/<%=comment._id%>/edit">Edit</a>
                         <% } %>
                     </div>
                 </div>
@@ -119,6 +124,9 @@
         </div>
     </div>
 
+
+
+    
     <script>
         function initMap() {
             var lat =  <%= beach.lat %>;

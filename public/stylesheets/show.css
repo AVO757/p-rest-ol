@@ -1,124 +1,151 @@
+
 body {
     font-family: 'Rancho', cursive;
 }
+
+.flash {
+    margin-top: 5%;
+}
+
 .grid {
     display: grid;
-    grid-template-columns:5% 1fr 5%;
-    grid-template-rows: 50px 10% 1fr auto 10px auto 75px;
+    grid-template-columns:5% 3fr 2fr 5%;
+    grid-template-rows: 5% auto auto auto 1fr;
     grid-template-areas:
-    ". . ."
-    ". beachName ."
-    ". content ."
-    ". map ."
-    ". . ."
-    ". commentSection ."
-    ". . .";
+    "beachName beachName beachName beachName"
+    ". beachLeftContent beachRightContent ."
+    ". beachDescription beachDescription ."
+    ". beachOptions beachOptions ."
+    ". beachCommentSection beachCommentSection .";
+    grid-column-gap: 1%;
+    margin: 8% 0;
 }
 
 .beachName {
     grid-area: beachName;
     text-align: center;
-    /* border: black solid 1px; */
 }
 
-.content {
-    grid-area: content;
+.beachLeftContent {
+    grid-area: beachLeftContent;
+    /* border: 1px solid black; */
 }
 
-.beachImage {
-    grid-area: beachImage;
-    display: block;
-    margin: 0 auto;
-    /* border: black solid 1px; */
-    
+.beachRightContent {
+    grid-area: beachRightContent;
+    /* border: 1px solid black; */
 }
 
-.beachDetails {
-    grid-area: beachDetails;
-    text-align: center;
-    /* border: black solid 1px; */
-    
+.beachLeftContent p {
+    font-size: 150%;
+}
+
+.beachDescription {
+    grid-area: beachDescription;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 2%;
 }
 
 .beachOptions {
     grid-area: beachOptions;
+    margin: 1% 0;
+}
+
+.beachCommentSection {
+    grid-area: beachCommentSection;
+
+}
+
+.comment {
     display: grid;
-    grid-template-columns: 1fr 1fr ;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 5% 5%;
     grid-template-areas:
-    ". btn-success"
-    "btn-danger btn-warning";
-    grid-row-gap: 1em;
-    margin-top: 10px; 
-}
-
-.beachOptions .btn-success {
-    grid-area: btn-success;
-    justify-self: end;
-}
-
-.beachOptions .btn-danger {
-    grid-area: btn-danger;
-}
-
-.beachOptions .btn-warning {
-    grid-area: btn-warning;
-    justify-self: end;
-}
-
-.commentSection {
-    grid-area: commentSection;
-    margin-top: 0px;
-    border: 1px solid black;
-}
-
-.comments {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-    "commentText commentText"
-    "commentAuthor commentAuthor"
+    "commentDescription commentDescription"
+    "commentAuthor ."
     "commentOptions commentOptions";
-    padding: 0 10px;
-    padding-top: 2px;
 }
 
-.commentText {
-    grid-area: commentText;
-    font-style: italic;
+.commentDescription {
+    grid-area: commentDescription;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
 }
 
 .commentAuthor {
     grid-area: commentAuthor;
-    
+    font-family: 'Roboto', sans-serif;
+    margin-bottom:1%;
+    font-weight: 500;
 }
 
 .commentOptions {
     grid-area: commentOptions;
-    display: grid;
-    grid-template-columns: 9fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas:
-    "commentEdit commentDelete";
+    
 }
 
-.commentEdit {
-    justify-self: start;
+.card-header a:hover {
+    text-decoration: none;
 }
+
 
 /* Google Maps */
 #map {
     grid-area: map;
-    height: 250px;
+    height: 100%;
     width: 100%;
-    margin-top: 20px;
 }
 
-/* Larger Screen*/
-/* @media(min-width:700px) {
+
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
     .grid {
-        display: none;
+    display: grid;
+    grid-template-columns:10% 3fr 2fr 10%;
+    grid-template-rows: 5% auto auto auto 1fr;
+    grid-template-areas:
+    "beachName beachName beachName beachName"
+    ". beachLeftContent beachRightContent ."
+    ". beachDescription beachDescription ."
+    ". beachOptions beachOptions ."
+    ". beachCommentSection beachCommentSection .";
+    grid-column-gap: 1%;
+    margin: 8% 0;
+    /* background-color: #2BA1D0; */
     }
-} */
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .grid {
+    display: grid;
+    grid-template-columns:10% 3fr 2fr 10%;
+    grid-template-rows: 5% auto auto auto 1fr;
+    grid-template-areas:
+    "beachName beachName beachName beachName"
+    ". beachLeftContent beachRightContent ."
+    ". beachDescription beachDescription ."
+    ". beachOptions beachOptions ."
+    ". beachCommentSection beachCommentSection .";
+    grid-column-gap: 1%;
+    margin: 8% 0;
+    }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .grid {
+    display: grid;
+    grid-template-columns:15% 3fr 2fr 15%;
+    grid-template-rows: 5% auto auto auto 1fr;
+    grid-template-areas:
+    "beachName beachName beachName beachName"
+    ". beachLeftContent beachRightContent ."
+    ". beachDescription beachDescription ."
+    ". beachOptions beachOptions ."
+    ". beachCommentSection beachCommentSection .";
+    grid-column-gap: 1%;
+    margin: 8% 0;
+    }
+}
