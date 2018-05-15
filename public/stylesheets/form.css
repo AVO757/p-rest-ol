@@ -2,12 +2,8 @@ body {
     font-family: 'Rancho', cursive;
 }
 
+
 .grid {
-    display: grid;
-}
-
-
-.content {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 10fr 1fr;
@@ -20,9 +16,15 @@ body {
     grid-area: form;
 }
 
+#inputText {
+    font-family: 'Roboto', sans-serif;
+}
+
 .option {
     grid-area: option;
 }
+
+
 
 
 

@@ -36,7 +36,7 @@ app.post("/beaches/:id/comments", middleware.isLoggedIn, function(req, res) {
                     comment.save();
                     beach.comments.push(comment);
                     beach.save();
-                    req.flash("success", "Successfully added comment")
+                    req.flash("success", "Successfully added comment");
                     res.redirect("/beaches/" + beach._id);
                 }
             });
@@ -51,6 +51,7 @@ app.get("/beaches/:id/comments/:comment_id/edit", middleware.checkCommentOwnersh
             console.log(err);
             res.redirect("back");
         } else {
+            req.flash("success", "Comment updated")
             res.render("comments/edit", { beach_id: req.params.id, comment: foundComment });
         }
     });
@@ -74,11 +75,12 @@ app.delete("/beaches/:id/comments/:comment_id", middleware.checkCommentOwnership
         if (err) {
             res.redirect("back");
         } else {
-            req.flash("error", "Comment deleted")
-            res.redirect("/beaches/" + req.params.beach_id);
+            req.flash("success", "Comment deleted");
+            res.redirect("/beaches/" + req.params.id);
         }
     });
 });
+
 
 
 module.exports = app;
