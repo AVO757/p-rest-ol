@@ -1,8 +1,10 @@
 
 body {
     text-align: center;
+}
+
+.navbar {
     font-family: 'Rancho', cursive;
-    
 }
 
 .grid {
@@ -21,8 +23,8 @@ body {
     ". cloud-hosting extra . ."
     "footer footer footer footer footer";
     background-color: #1f3050;
-    font-family: 'Roboto', sans-serif;
     padding-bottom: 10%;
+    font-family: 'Roboto', sans-serif;
 }
 
 .header {
@@ -150,4 +152,8 @@ body {
 .extra p {
     color: #add7ff;
     margin:0;
+}
+
+span {
+    font-family: 'Rancho', cursive;
 }

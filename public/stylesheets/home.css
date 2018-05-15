@@ -1,3 +1,116 @@
-body {
+.navbar {
     font-family: 'Rancho', cursive;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 5% 1fr 5%;
+    grid-template-rows: 10% 10% 20% 20% 5%;
+    grid-template-areas:
+    ". h1 ."
+    ". h2 ."
+    ". p1 ."
+    ". p2 ."
+    ". link .";
+    grid-row-gap: 1em;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin-top: 10%;
+}
+
+h1 {
+    grid-area: h1;
+}
+
+h3 {
+    grid-area: h2;
+}
+
+.p1 {
+    grid-area: p1;
+    margin:0 10%;
+}
+
+.p2 {
+    grid-area: p2;
+}
+
+#viewBeach {
+    grid-area: link;
+    font-family: 'Rancho', cursive;
+    font-size: 20px;
+    justify-self: center;
+}
+
+#clickHere:hover {
+    text-decoration: none;
+    color: #df4576;
+}
+
+span {
+    font-family: 'Rancho', cursive;
+    font-size: 18px;
+}
+
+i {
+    font-size: 15px;
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 15% 1fr 15%;
+        grid-template-rows: 10% 10% 20% 20% 5%;
+        grid-template-areas:
+        ". h1 ."
+        ". h2 ."
+        ". p1 ."
+        ". p2 ."
+        ". link .";
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        margin-top: 10%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width:992px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 15% 1fr 15%;
+        grid-template-rows: 10% 10% 20% 20% 5%;
+        grid-template-areas:
+        ". h1 ."
+        ". h2 ."
+        ". p1 ."
+        ". p2 ."
+        ". link .";
+        grid-row-gap: 1em;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        margin-top: 10%;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 20% 1fr 20%;
+        grid-template-rows: 10% 10% 20% 20% 5%;
+        grid-template-areas:
+        ". h1 ."
+        ". h2 ."
+        ". p1 ."
+        ". p2 ."
+        ". link .";
+        grid-row-gap: 1em;
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        margin-top: 10%;
+    }
 }

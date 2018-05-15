@@ -1,7 +1,91 @@
-<%include partials/header %>
+<!DOCTYPE html>
+<html>
 
-<h1>Homepage</h1>
+<head>
+    <script src="/js/jquery-slim.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+</head>
 
-<a href="beaches">View all beaches</a>
+<body>
 
+    <div>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a class="navbar-brand" href="/">Project REST <i class="fas fa-anchor"></i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/beaches">Beaches</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            About
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/about/me">Me</a>
+                            <a class="dropdown-item" href="/about/portfolio">Portfolio</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <% if(!currentUser) {%>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Sign Up</a>
+                        </li>
+                        <% } else { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Signed in as
+                                    <%= currentUser.username %>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                            <% } %>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <!-- flash messages -->
+    <div class="container" id="flash">
+        <% if(error && error.length > 0) {%>
+            <div class="alert alert-warning" role="alert">
+                <%=error%>
+            </div>
+            <% } %>
+                <% if(success && success.length > 0) {%>
+                    <div class="alert alert-success" role="alert">
+                        <%=success%>
+                    </div>
+                    <% } %>
+    </div>
+
+    <div class="grid">
+        <h1>Welcome!</h1>
+        <h3>Hi, I'm Alexander Van Oers.</h3>
+        <p class="p1">I'm new in web development, recently finished a (full-stack) web development bootcamp, and now currently looking for an internship
+            or full-time in web development.</p>
+        <p class="p2">I have created this website, <span>Project REST</span>, with the intention to show you what I can do. Here you can share one or more of your favourite beaches 
+            by registering (no email required) and then post/edit/delete your favourites beaches. You can also add comments. To know more about what
+            tools/technologies I used to create <span>Project REST</span>, <a id="clickHere" href="/about/portfolio">click here</a>.</p>
+        <a id="viewBeach" class="btn btn-outline-info" href="beaches">View all beaches</a>
+    </div>
 <%include partials/footer %>
