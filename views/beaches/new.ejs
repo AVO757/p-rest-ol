@@ -4,7 +4,9 @@
 <head>
     <script src="/js/jquery-slim.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/form.css">
     <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <script src="/js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 
@@ -80,19 +82,19 @@
             <form action="/beaches" method="POST">
                 <div class="form-group">
                     <label>Beach name</label>
-                    <input class="form-control" type="text" name="beach[name]" placeholder="Beach name">
+                    <input class="form-control inputText" type="text" name="beach[name]">
                 </div>
                 <div class="form-group">
                     <label>Image URL</label>
-                    <input class="form-control" type="text" name="beach[image]" name="image" placeholder="Image URL">
+                    <input class="form-control inputText" type="text" name="beach[image]" name="image" >
                 </div>
                 <div class="form-group">
                     <label>Location</label>
-                    <input class="form-control" type="text" name="beach[location]" id="location" placeholder="Beach name, country">
+                    <input class="form-control inputText" type="text" name="beach[location]" id="location">
                 </div>
                 <div class="form-group">
                     <label>About the beach</label>
-                    <textarea class="form-control" name="beach[description]" id="description" placeholder="Description"></textarea>
+                    <textarea class="form-control inputText" name="beach[description]" id="description"></textarea>
                 </div>
                 <input class="btn btn-primary float-right" type="submit">
             </form>

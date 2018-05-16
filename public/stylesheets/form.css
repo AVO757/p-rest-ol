@@ -16,7 +16,7 @@ body {
     grid-area: form;
 }
 
-#inputText {
+.inputText {
     font-family: 'Roboto', sans-serif;
 }
 

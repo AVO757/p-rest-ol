@@ -43,6 +43,7 @@ body {
 .beachDescription {
     grid-area: beachDescription;
     font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     margin-top: 2%;
 }
 
@@ -61,22 +62,22 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto 5% 5%;
     grid-template-areas:
-    "commentDescription commentDescription"
     "commentAuthor ."
+    "commentDescription commentDescription"
     "commentOptions commentOptions";
-}
-
-.commentDescription {
-    grid-area: commentDescription;
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
 }
 
 .commentAuthor {
     grid-area: commentAuthor;
     font-family: 'Roboto', sans-serif;
-    margin-bottom:1%;
-    font-weight: 500;
+    font-weight: 400;
+    margin: 0;
+}
+
+.commentDescription {
+    grid-area: commentDescription;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 
 .commentOptions {
