@@ -51,7 +51,7 @@ app.get("/beaches/:id/comments/:comment_id/edit", middleware.checkCommentOwnersh
             console.log(err);
             res.redirect("back");
         } else {
-            req.flash("success", "Comment updated")
+            
             res.render("comments/edit", { beach_id: req.params.id, comment: foundComment });
         }
     });
@@ -64,6 +64,7 @@ app.put("/beaches/:id/comments/:comment_id", middleware.checkCommentOwnership, f
             console.log(err);
             res.redirect("back");
         } else {
+            req.flash("success", "Comment updated");
             res.redirect( "/beaches/" + req.params.id);
         }
     });

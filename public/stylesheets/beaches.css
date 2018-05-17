@@ -35,7 +35,7 @@ hr {
 .beaches {
     grid-area: beaches;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-gap: 1em;
 }
@@ -47,18 +47,6 @@ hr {
     margin-bottom: 10px;
 }
 
-.beach .image {
-
-}
-
-.beach .detail {
-
-}
-
-.beach .link {
-
-}
-
 
 img {
     display: block;
@@ -66,11 +54,44 @@ img {
     height: auto;
 }
 
-
-p .location {
-    margin: 0;
+.location {
+    font-size: 120%;
+    color: #C0392B;
 }
 
-.beach a:hover {
+.link {
+    justify-self: start;
+    font-size: 110%;
+}
+
+.sub-header a {
+    font-size: 140%;
+}
+
+a:hover {
     text-decoration: none;
+}
+
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .beaches {
+    grid-area: beaches;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 1em;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .beaches {
+    grid-area: beaches;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 1em;
+    }
 }

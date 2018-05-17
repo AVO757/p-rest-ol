@@ -5,11 +5,11 @@ body {
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 5% 1fr 5%;
     grid-template-rows: 10fr 1fr;
     grid-template-areas:
-    "form"
-    "option";
+    ". form ."
+    ". option .";
 }
 
 .form {
@@ -25,9 +25,30 @@ body {
 }
 
 
-
-
-
 #flash {
     margin-top: 10px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .grid {
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
+    grid-template-rows: 10fr 1fr;
+    grid-template-areas:
+    ". form ."
+    ". option .";
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .grid {
+    display: grid;
+    grid-template-columns: 15% 1fr 15%;
+    grid-template-rows: 10fr 1fr;
+    grid-template-areas:
+    ". form ."
+    ". option .";
+    }
 }

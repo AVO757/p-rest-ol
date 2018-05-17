@@ -106,6 +106,7 @@ app.put("/beaches/:id", middleware.checkBeachOwnership, function(req, res) {
                 req.flash("error", err.message);
                 res.redirect("/beaches/" + req.params.id);
             } else {
+                req.flash("success", "Beach updated");
                 res.redirect("/beaches/" + req.params.id);
             }
         });
