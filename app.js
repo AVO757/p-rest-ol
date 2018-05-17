@@ -59,11 +59,13 @@ var beachRoutes     = require("./routes/beaches");
 var commentRoutes   = require("./routes/comments");
 var indexRoutes     = require("./routes/index");
 var aboutRoutes     = require("./routes/about");
+var contactRoute    = require("./routes/contact");
 
 app.use(beachRoutes);
 app.use(commentRoutes);
 app.use(indexRoutes);
 app.use(aboutRoutes);
+app.use(contactRoute);
 
 
 

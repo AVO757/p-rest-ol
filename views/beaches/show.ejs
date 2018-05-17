@@ -70,51 +70,73 @@
 
 
     <div class="grid">
-        <h1 class="beachName"><%=beach.name%></h1>
-        <div class="beachLeftContent card">
-            <img class="card-img-top" src="<%=beach.image%>">
-            <div class="card-subtitle card-body"><p><%=beach.location%></p></div>
-        </div>
-
-        <div class="beachRightContent">
-            <div class="rounded" id="map"></div>
-        </div>
-
-        <div class="beachDescription border rounded card-body bg-light">
-            <p><%=beach.description%></p>
-        </div>
-    
-    
-        <!-- hide buttons for unauthorized users -->
-        <div class="beachOptions">
-            <% if(currentUser && beach.author.id.equals(currentUser._id)) {%>
-                <a class="btn btn-success float-right" href="/beaches/<%=beach._id%>/edit">Edit beach</a>
-                <form action="/beaches/<%=beach._id%>?_method=DELETE" method="POST">
-                    <input class="btn btn-danger" type="submit" value="Delete beach">
-                </form>
-            <% } %>
-        </div>
-        
-
-        <div class="beachCommentSection">
-            <h5 class="card-header">Leave here your thoughts
-                <a class="float-right" href="/beaches/<%=beach._id%>/comments/new">Add comment</a>
-            </h5>
-            <%beach.comments.forEach(function(comment) {%>
-                <div class=" comment border rounded card-body">
-                    <p class=" commentDescription"><%=comment.text%></p>
-                    <p class=" commentAuthor"><%=comment.author.username%></p>
-                    <div class="commentOptions">
-                        <% if(currentUser && comment.author.id.equals(currentUser._id)) {%>
-                            <form action="/beaches/<%=beach._id%>/comments/<%=comment.id%>?_method=DELETE" method="POST">
-                                <input class="btn btn-danger float-right" type="submit" value="Delete">
-                            </form>
-                            <a class="btn btn-warning" href="/beaches/<%=beach._id%>/comments/<%=comment._id%>/edit">Edit</a>
-                        <% } %>
-                    </div>
+        <div class="content">
+            <h1 class="beachName">
+                <%=beach.name%>
+            </h1>
+            <div class="beachLeftContent card">
+                <img class="card-img-top" src="<%=beach.image%>">
+                <div class="card-subtitle card-body">
+                    <p>
+                        <%=beach.location%>
+                    </p>
                 </div>
-            <%})%>
+            </div>
+        
+            <div class="beachRightContent">
+                <div class="rounded" id="map"></div>
+            </div>
+        
+            <div class="beachDescription border rounded card-body bg-light">
+                <p>
+                    <%=beach.description%>
+                </p>
+            </div>
+        
+        
+            <!-- hide buttons for unauthorized users -->
+            <div class="beachOptions">
+                <% if(currentUser && beach.author.id.equals(currentUser._id)) {%>
+                    <a class="btn btn-success float-right" href="/beaches/<%=beach._id%>/edit">Edit beach</a>
+                    <form action="/beaches/<%=beach._id%>?_method=DELETE" method="POST">
+                        <input class="btn btn-danger" type="submit" value="Delete beach">
+                    </form>
+                    <% } %>
+            </div>
+        
+        
+            <div class="beachCommentSection">
+                <h5 class="card-header">Leave here your thoughts
+                    <a class="float-right" href="/beaches/<%=beach._id%>/comments/new">Add comment</a>
+                </h5>
+                <%beach.comments.forEach(function(comment) {%>
+                    <div class=" comment border rounded card-body">
+                        <p class=" commentDescription">
+                            <%=comment.text%>
+                        </p>
+                        <p class=" commentAuthor">
+                            <%=comment.author.username%>
+                        </p>
+                        <div class="commentOptions">
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)) {%>
+                                <form action="/beaches/<%=beach._id%>/comments/<%=comment.id%>?_method=DELETE" method="POST">
+                                    <input class="btn btn-danger float-right" type="submit" value="Delete">
+                                </form>
+                                <a class="btn btn-warning" href="/beaches/<%=beach._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                                <% } %>
+                        </div>
+                    </div>
+                    <%})%>
+            </div>
         </div>
+        <footer>
+            <div class="container contact">
+                <p id="email">vo.c.alexander@gmail.com</p>
+                <p id="created">Created by Alexander Van Oers</p>
+                <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p id="location">London, UK</p>
+            </div>
+        </footer>
     </div>
 
 

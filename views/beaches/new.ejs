@@ -68,33 +68,45 @@
                     <% } %>
     </div>
 
+
     <div class="grid">
-        <div class="card-body container form">
-            <h2 class="card-title">Create beach</h2>
-            <hr>
-            <form action="/beaches" method="POST">
-                <div class="form-group">
-                    <label>Beach name</label>
-                    <input class="form-control inputText" type="text" name="beach[name]">
-                </div>
-                <div class="form-group">
-                    <label>Image URL</label>
-                    <input class="form-control inputText" type="text" name="beach[image]" name="image" >
-                </div>
-                <div class="form-group">
-                    <label>Location</label>
-                    <input class="form-control inputText" type="text" name="beach[location]" id="location">
-                </div>
-                <div class="form-group">
-                    <label>About the beach</label>
-                    <textarea class="form-control inputText" name="beach[description]" id="description"></textarea>
-                </div>
-                <input class="btn btn-primary float-right" type="submit">
-            </form>
+        <div class="content">
+            <div class="card-body container form">
+                <h2 class="card-title">Create beach</h2>
+                <hr>
+                <form action="/beaches" method="POST">
+                    <div class="form-group">
+                        <label>Beach name</label>
+                        <input class="form-control inputText" type="text" name="beach[name]">
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input class="form-control inputText" type="text" name="beach[image]" name="image">
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input class="form-control inputText" type="text" name="beach[location]" id="location">
+                    </div>
+                    <div class="form-group">
+                        <label>About the beach</label>
+                        <textarea class="form-control inputText" name="beach[description]" id="description"></textarea>
+                    </div>
+                    <input class="btn btn-primary float-right" type="submit">
+                </form>
+            </div>
+            <div class="container option">
+                <a class="btn btn-success float-right" href="/beaches">View all beaches</a>
+            </div>
         </div>
-        <div class="container option">
-            <a class="btn btn-success float-right" href="/beaches">View all beaches</a>
-        </div>
+        <footer>
+            <div class="container contact">
+                <p id="email">vo.c.alexander@gmail.com</p>
+                <p id="created">Created by Alexander Van Oers</p>
+                <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p id="location">London, UK</p>
+            </div>
+        </footer>
     </div>
+    
     
 <%include ../partials/footer %>

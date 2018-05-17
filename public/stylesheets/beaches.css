@@ -1,4 +1,5 @@
-body {
+html, body {
+    height: 100%;
     font-family: 'Rancho', cursive;
 }
 
@@ -6,14 +7,26 @@ body {
     margin-top: 10px;
 }
 
+.grid {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns:1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+    "content"
+    "footer";
+}
+
 .content {
     display: grid;
+    grid-area: content;
     grid-template-columns: 10% 1fr 10%;
     grid-template-rows: 10% 5% 1fr;
     grid-template-areas:
     "header header header"
     "sub-header sub-header sub-header"
     ". beaches .";
+    margin-bottom: 5%;
 }
 
 .header {
@@ -70,6 +83,43 @@ img {
 
 a:hover {
     text-decoration: none;
+}
+
+/* footer */
+
+footer {
+    grid-area: footer;
+    height: 100%;
+    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer .contact {
+    display: grid;
+    padding: 1% 0;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+footer .contact * {
+    margin:0;
+    font-size: 80%;
+}
+
+footer .contact #created {
+    justify-self: end;
+}
+
+footer .contact #email {
+    justify-self: start;
+}
+
+footer .contact #location {
+    justify-self: end;
+}
+
+footer .contact #linkedIn {
+    justify-self: start;
+    align-self: start;
 }
 
 

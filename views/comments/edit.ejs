@@ -69,17 +69,26 @@
     </div>
 
     <div class="grid">
-        <div class="card-body container form">
-            <h2 class="card-title">Edit comment</h2>
-            <hr>
-            <form action="/beaches/<%=beach_id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
-                <div class="form-group">
-                    <textarea class="form-control inputText" name="comment[text]"><%=comment.text%></textarea>
-                </div>
-                <input class="btn btn-success" type="submit">
-            </form>
+        <div class="content">
+            <div class="card-body container form">
+                <h2 class="card-title">Edit comment</h2>
+                <hr>
+                <form action="/beaches/<%=beach_id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <textarea class="form-control inputText" name="comment[text]"><%=comment.text%></textarea>
+                    </div>
+                    <input class="btn btn-success" type="submit">
+                </form>
+            </div>
         </div>
+        <footer>
+            <div class="container contact">
+                <p id="email">vo.c.alexander@gmail.com</p>
+                <p id="created">Created by Alexander Van Oers</p>
+                <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p id="location">London, UK</p>
+            </div>
+        </footer>
     </div>
-
 
     <%include ../partials/footer%>

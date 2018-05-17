@@ -67,23 +67,32 @@
                     <% } %>
     </div>
     
-    
     <div class="grid">
-        <div class="card-body container form">
-            <h2 class="card-title">Sign up</h2>
-            <hr>
-            <form action="/register" method="POST">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input class="form-control" type="text" name="username">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input class="form-control" type="password" name="password">
-                </div>
-                <button class="btn btn-primary float-right">Sign up</button>
-            </form>
+        <div class="content">
+            <div class="card-body container form">
+                <h2 class="card-title">Sign up</h2>
+                <hr>
+                <form action="/register" method="POST">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input class="form-control" type="text" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input class="form-control" type="password" name="password">
+                    </div>
+                    <button class="btn btn-primary float-right">Sign up</button>
+                </form>
+            </div>
         </div>
+        <footer>
+            <div class="container contact">
+                <p id="email">vo.c.alexander@gmail.com</p>
+                <p id="created">Created by Alexander Van Oers</p>
+                <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p id="location">London, UK</p>
+            </div>
+        </footer>
     </div>
 
 <%include ../partials/footer %>

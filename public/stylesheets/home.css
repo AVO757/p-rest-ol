@@ -1,38 +1,57 @@
+html, body {
+    height: 100%;
+    
+}
 .navbar {
     font-family: 'Rancho', cursive;
 }
 
 .grid {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns:1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+    "content"
+    "footer";
+}
+
+.content {
+    grid-area: content;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin: 10% 0;
     display: grid;
     grid-template-columns: 5% 1fr 5%;
-    grid-template-rows: 10% 10% 20% 20% 5%;
+    grid-template-rows: auto;
     grid-template-areas:
     ". h1 ."
     ". h2 ."
     ". p1 ."
     ". p2 ."
     ". link .";
-    grid-row-gap: 1em;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    margin-top: 10%;
 }
+
 
 h1 {
     grid-area: h1;
+    align-self: start;
 }
 
 h3 {
     grid-area: h2;
+    align-self: start;
 }
 
 .p1 {
     grid-area: p1;
     margin:0 10%;
+    align-self: start;
 }
 
 .p2 {
     grid-area: p2;
+    align-self: start;
 }
 
 #viewBeach {
@@ -40,6 +59,7 @@ h3 {
     font-family: 'Rancho', cursive;
     font-size: 20px;
     justify-self: center;
+    align-self: start;
 }
 
 #clickHere:hover {
@@ -56,61 +76,64 @@ i {
     font-size: 15px;
 }
 
+/* footer */
+
+footer {
+    grid-area: footer;
+    height: 100%;
+    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer .contact {
+    display: grid;
+    padding: 1% 0;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+footer .contact * {
+    margin:0;
+    font-size: 80%;
+}
+
+footer .contact #created {
+    justify-self: end;
+}
+
+footer .contact #email {
+    justify-self: start;
+}
+
+footer .contact #location {
+    justify-self: end;
+}
+
+footer .contact #linkedIn {
+    justify-self: start;
+    align-self: start;
+}
+
 
 /* Medium devices (tablets, 768px and up) */
 
 @media (min-width: 768px) {
-    .grid {
-        display: grid;
+    .content {
         grid-template-columns: 15% 1fr 15%;
-        grid-template-rows: 10% 10% 20% 20% 5%;
-        grid-template-areas:
-        ". h1 ."
-        ". h2 ."
-        ". p1 ."
-        ". p2 ."
-        ". link .";
-        font-family: 'Roboto', sans-serif;
-        text-align: center;
-        margin-top: 10%;
+        
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 
 @media (min-width:992px) {
-    .grid {
-        display: grid;
+    .content {
         grid-template-columns: 15% 1fr 15%;
-        grid-template-rows: 10% 10% 20% 20% 5%;
-        grid-template-areas:
-        ". h1 ."
-        ". h2 ."
-        ". p1 ."
-        ". p2 ."
-        ". link .";
-        grid-row-gap: 1em;
-        font-family: 'Roboto', sans-serif;
-        text-align: center;
-        margin-top: 10%;
     }
 }
 
 
 @media (min-width: 1200px) {
-    .grid {
-        display: grid;
+    .content {
         grid-template-columns: 20% 1fr 20%;
-        grid-template-rows: 10% 10% 20% 20% 5%;
-        grid-template-areas:
-        ". h1 ."
-        ". h2 ."
-        ". p1 ."
-        ". p2 ."
-        ". link .";
-        grid-row-gap: 1em;
-        font-family: 'Roboto', sans-serif;
-        text-align: center;
-        margin-top: 10%;
     }
 }

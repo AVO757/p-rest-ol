@@ -70,31 +70,41 @@
 
     
 
-
-    <div class="content">
-        <div class="header">
-            <h1>Wonderful beaches</h1>
-            <hr>
-        </div>
-        <div class="sub-header">
-            <a href="/beaches/new">Create a new beach</a>
-        </div>
-        <div class="beaches container-fluid">
-            <% beaches.forEach(function(beach) { %>
-                <div class=" beach">
-                    <img class="image" width="50" height="50" src="<%=beach.image%>">
-                    <div class="detail">
-                        <h4 class="name">
-                            <%=beach.name%>
-                        </h4>
-                        <p class="location font-weight-light">
-                            <%=beach.location%>
-                        </p>
+    <div class="grid">
+        <div class="content">
+            <div class="header">
+                <h1>Wonderful beaches</h1>
+                <hr>
+            </div>
+            <div class="sub-header">
+                <a href="/beaches/new">Create a new beach</a>
+            </div>
+            <div class="beaches container-fluid">
+                <% beaches.forEach(function(beach) { %>
+                    <div class=" beach">
+                        <img class="image" width="50" height="50" src="<%=beach.image%>">
+                        <div class="detail">
+                            <h4 class="name">
+                                <%=beach.name%>
+                            </h4>
+                            <p class="location font-weight-light">
+                                <%=beach.location%>
+                            </p>
+                        </div>
+                        <a class="link" href="/beaches/<%=beach._id%>">View beach</a>
                     </div>
-                    <a class="link" href="/beaches/<%=beach._id%>">View beach</a>
-                </div>
-            <%});%>
+                    <%});%>
+            </div>
         </div>
+        <footer>
+            <div class="container contact">
+                <p id="email">vo.c.alexander@gmail.com</p>
+                <p id="created">Created by Alexander Van Oers</p>
+                <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p id="location">London, UK</p>
+            </div>
+        </footer>
     </div>
+    
 
 <%include ../partials/footer %>
