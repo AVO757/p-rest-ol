@@ -74,14 +74,14 @@
             <div class="card-body container form">
                 <h2 class="card-title">Create beach</h2>
                 <hr>
-                <form action="/beaches" method="POST">
+                <form action="/beaches" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Beach name</label>
                         <input class="form-control inputText" type="text" name="beach[name]">
                     </div>
                     <div class="form-group">
-                        <label>Image URL</label>
-                        <input class="form-control inputText" type="text" name="beach[image]" name="image">
+                        <label for="image">Image</label>
+                        <input type="file" id="image" name="beach[image]" accept="image/*" required>
                     </div>
                     <div class="form-group">
                         <label>Location</label>

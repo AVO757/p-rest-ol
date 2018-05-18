@@ -14,6 +14,33 @@ var options = {
 
 var geocoder = NodeGeocoder(options);
 
+///////////////////////////
+// image upload
+///////////////////////////
+
+var multer = require('multer');
+var storage = multer.diskStorage({
+    filename: function (req, file, callback) {
+        callback(null, Date.now() + file.originalname);
+    }
+});
+var imageFilter = function (req, file, cb) {
+    // accept image files only
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+};
+var upload = multer({ storage: storage, fileFilter: imageFilter })
+
+var cloudinary = require('cloudinary');
+cloudinary.config({
+    cloud_name: "avocloud",
+    api_key: 311266135518586,
+    api_secret: process.env.CLOUDINARY_API_KEY
+});
+
+///////////////////////////
 
 // BEACHES
 
@@ -37,16 +64,16 @@ app.get("/beaches/new", middleware.isLoggedIn, function(req, res) {
 
 
 // Create beach
-app.post("/beaches", middleware.isLoggedIn, function(req, res) {
+app.post("/beaches", middleware.isLoggedIn, upload.single("beach[image]"), function(req, res) {
     //get data from the beach form
     var name = req.body.beach.name;
-    var image = req.body.beach.image;
     var desc = req.body.beach.description;
     var author = {
         id: req.user._id,
         username: req.user.username
     };
 
+    // google map location
     geocoder.geocode(req.body.beach.location, function(err, data) {
         if (err || !data.length) {
             req.flash("error", "Invalid address");
@@ -55,16 +82,27 @@ app.post("/beaches", middleware.isLoggedIn, function(req, res) {
         var lat = data[0].latitude;
         var lng = data[0].longitude;
         var location = data[0].formattedAddress;
-        var newBeach = { name: name, image: image, description: desc, location: location, author: author, lat: lat, lng: lng };
-        // Create a new beach and save to DB
-        Beach.create(newBeach, function (err, newBeach) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.redirect("beaches");
-            }
+
+        // image upload
+        cloudinary.uploader.upload(req.file.path, function (result) {
+            // add cloudinary url for the image to the beach object under image property
+            req.body.beach.image = result.secure_url;
+            var image = req.body.beach.image;
+            // add image's public_id to campground object
+            req.body.beach.imageId = result.public_id;
+            var imageId = req.body.beach.imageId;
+            var newBeach = { name: name, image: image, imageId: imageId,  description: desc, location: location, author: author, lat: lat, lng: lng };            
+            
+            // Create a new beach and save to DB
+            Beach.create(newBeach, function (err, newBeach) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.redirect("beaches");
+                }
+            });
         });
-    })
+    });
 });
 
 
@@ -90,7 +128,8 @@ app.get("/beaches/:id/edit", middleware.checkBeachOwnership, function(req, res) 
 });
 
 // Update beach
-app.put("/beaches/:id", middleware.checkBeachOwnership, function(req, res) {
+app.put("/beaches/:id", middleware.checkBeachOwnership, upload.single("beach[image]"), function(req, res) {
+    //google map
     geocoder.geocode(req.body.beach.location, function(err, data) {
         if (err || !data.length) {
             req.flash("error", "Invalid address");
@@ -100,14 +139,28 @@ app.put("/beaches/:id", middleware.checkBeachOwnership, function(req, res) {
         req.body.beach.lng = data[0].longitude;
         req.body.beach.location = data[0].formattedAddress;
 
-        Beach.findByIdAndUpdate(req.params.id, req.body.beach, function (err, updatedBeach) {
+        // beach update and image update
+        Beach.findById(req.params.id, async function (err, beach) {
             if (err) {
-                console.log(err);
                 req.flash("error", err.message);
-                res.redirect("/beaches/" + req.params.id);
+                res.redirect("back");
             } else {
-                req.flash("success", "Beach updated");
-                res.redirect("/beaches/" + req.params.id);
+                if (req.file) {
+                    try {
+                        await cloudinary.uploader.destroy(beach.imageId);
+                        var result = await cloudinary.uploader.upload(req.file.path);
+                        beach.imageId = result.public_id;
+                        beach.image = result.secure_url;
+                    } catch (err) {
+                        req.flash("error", err.message);
+                        return res.redirect("back")
+                    }
+                }
+            beach.name = req.body.beach.name;
+            beach.description = req.body.beach.description;
+            beach.save();
+            req.flash("success", "Successfully Updated!");
+            res.redirect("/beaches/" + req.params.id);
             }
         });
     });
@@ -115,13 +168,21 @@ app.put("/beaches/:id", middleware.checkBeachOwnership, function(req, res) {
 
 // Destroy beach
 app.delete("/beaches/:id", middleware.checkBeachOwnership, function(req, res) {
-    Beach.findByIdAndRemove(req.params.id, function(err) {
-        if(err) {
-            console.log(err);
-            res.redirect("/beaches");
-        } else {
-            req.flash("success", "Beach deleted")
-            res.redirect("/beaches");
+    Beach.findById(req.params.id, async function (err, beach) {
+        if (err) {
+            req.flash("error", err.message);
+            return res.redirect("back");
+        }
+        try {
+            await cloudinary.uploader.destroy(beach.imageId);
+            beach.remove();
+            req.flash('success', 'Beach deleted successfully!');
+            res.redirect('/beaches');
+        } catch (err) {
+            if (err) {
+                req.flash("error", err.message);
+                return res.redirect("back");
+            }
         }
     });
 });

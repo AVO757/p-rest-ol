@@ -21,12 +21,13 @@ html, body {
     display: grid;
     grid-area: content;
     grid-template-columns: 10% 1fr 10%;
-    grid-template-rows: 10% 5% 1fr;
+    grid-template-rows: 13% 15% 1fr;
     grid-template-areas:
     "header header header"
     "sub-header sub-header sub-header"
     ". beaches .";
     margin-bottom: 5%;
+    
 }
 
 .header {
@@ -51,21 +52,22 @@ hr {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-gap: 1em;
+    margin-bottom: 20%;
 }
 
 .beach {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    margin-bottom: 10px;
+    grid-template-rows: 1fr auto;
+    
 }
-
 
 img {
     display: block;
     width: 100%;
     height: auto;
 }
+
 
 .location {
     font-size: 120%;
@@ -74,6 +76,7 @@ img {
 
 .link {
     justify-self: start;
+    align-self: start;
     font-size: 110%;
 }
 
@@ -127,21 +130,23 @@ footer .contact #linkedIn {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     .beaches {
-    grid-area: beaches;
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-gap: 1em;
+    margin-bottom: 40%;
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     .beaches {
-    grid-area: beaches;
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    grid-gap: 1em;
+    margin-bottom: 30%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .beaches {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 20%;
     }
 }

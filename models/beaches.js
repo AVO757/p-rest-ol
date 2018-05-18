@@ -4,6 +4,7 @@ var mongoose = require("mongoose");
 var beachesSchema = new mongoose.Schema({
     name: String,
     image: String,
+    imageId: String,
     location: String,
     lat: Number,
     lng: Number,

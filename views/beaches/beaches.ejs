@@ -79,21 +79,19 @@
             <div class="sub-header">
                 <a href="/beaches/new">Create a new beach</a>
             </div>
-            <div class="beaches container-fluid">
+            <div class="beaches">
                 <% beaches.forEach(function(beach) { %>
                     <div class=" beach">
-                        <img class="image" width="50" height="50" src="<%=beach.image%>">
-                        <div class="detail">
-                            <h4 class="name">
-                                <%=beach.name%>
-                            </h4>
-                            <p class="location font-weight-light">
-                                <%=beach.location%>
-                            </p>
-                        </div>
+                        <img width="50" height="50" src="<%=beach.image%>">
+                        <h4 class="name">
+                        <%=beach.name%>
+                        </h4>
+                        <p class="location font-weight-light">
+                            <%=beach.location%>
+                        </p>
                         <a class="link" href="/beaches/<%=beach._id%>">View beach</a>
                     </div>
-                    <%});%>
+                <%});%>
             </div>
         </div>
         <footer>
