@@ -22,7 +22,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 // Connect mongoose database
 var url = process.env.DATABASEURL || "mongodb://localhost/project_rest";
-// mongoose.connect("mongodb://localhost/project_rest");
+mongoose.connect(url);
 // Set body-parser
 app.use(bodyParser.urlencoded({extended: true}));
 // Method-Override
