@@ -12,6 +12,10 @@ body {
     font-family: 'Rancho', cursive;
 }
 
+i {
+    font-size: 15px;
+}
+
 .grid {
     min-height: 100%;
     display: grid;

@@ -4,6 +4,10 @@ html, body {
     font-family: 'Rancho', cursive;
 }
 
+i {
+    font-size: 15px;
+}
+
 .flash {
     margin-top: 1%;
 }
