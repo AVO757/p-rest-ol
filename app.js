@@ -71,6 +71,7 @@ app.use(contactRoute);
 
 
 /////////////////////////////////////////////////
-app.listen(process.env.PORT, process.env.IP, function() {
+var listenURL = "process.env.PORT, process.env.IP" || 3000;
+app.listen(listenURL, function() {
     console.log("server started");
 });
