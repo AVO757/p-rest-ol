@@ -21,7 +21,8 @@ app.set("view engine", "ejs");
 // For CSS
 app.use(express.static(__dirname + "/public"));
 // Connect mongoose database
-mongoose.connect("mongodb://localhost/project_rest");
+var url = process.env.DATABASEURL || "mongodb://localhost/project_rest";
+mongoose.connect(url);
 // Set body-parser
 app.use(bodyParser.urlencoded({extended: true}));
 // Method-Override
