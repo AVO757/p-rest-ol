@@ -41,7 +41,7 @@ html, body {
 
 h1 {
     grid-area: h1;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 h3 {
@@ -52,7 +52,7 @@ h3 {
 .p1 {
     grid-area: p1;
     margin:0 5%;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 .p2 {
@@ -162,7 +162,6 @@ footer .contact #linkedIn {
 
 @media (min-width: 1200px) {
     .content {
-        margin-top: 5%;
         margin-left: 20%;
         margin-right: 20%;
         /* grid-template-columns: 20% 1fr 20%; */
