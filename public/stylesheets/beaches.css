@@ -25,10 +25,9 @@ i {
     display: grid;
     grid-area: content;
     grid-template-columns: 10% 1fr 10%;
-    grid-template-rows: 13% 15% 1fr 100%;
+    grid-template-rows: 20% 1fr 100%;
     grid-template-areas:
     "header header header"
-    "sub-header sub-header sub-header"
     ". beaches ."
     ". . .";
 }
@@ -39,15 +38,12 @@ i {
     text-align: center;
 }
 
-hr {
-    margin: 0 30%;
+.header a {
+    font-size: 130%;
 }
 
-.sub-header {
-    grid-area: sub-header;
-    text-align: center;
-    margin-top: 2px;
-    margin-bottom: 2%;
+hr {
+    margin: 0 30%;
 }
 
 .beaches {
