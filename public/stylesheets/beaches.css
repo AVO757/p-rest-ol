@@ -30,7 +30,7 @@ i {
     "header header header"
     "sub-header sub-header sub-header"
     ". beaches .";
-    margin-bottom: 5%;
+    margin-bottom: 100%;
     
 }
 
@@ -57,7 +57,6 @@ hr {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-gap: 1em;
-    margin-bottom: 100%;
 }
 
 .beach {
