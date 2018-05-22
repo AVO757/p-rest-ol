@@ -45,7 +45,8 @@ i {
 
 .header {
     grid-area: header;
-    padding: 5%;
+    padding-top: 5%;
+    padding-bottom: 3%;
     color: #27eba7;
 }
 
@@ -243,13 +244,13 @@ footer .contact #linkedIn {
     }
 
     footer .contact #location {
-    justify-self: end;
-    }
+        justify-self: end;
+        }
 
     footer .contact #linkedIn {
-    justify-self: start;
-    align-self: start;
-    }
+        justify-self: start;
+        align-self: start;
+        }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -265,7 +266,9 @@ footer .contact #linkedIn {
 /* Large devices (desktops, 992px and up) */
 
 @media (min-width: 992px) {
-    
+    .header {
+        padding-bottom: 1%;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */

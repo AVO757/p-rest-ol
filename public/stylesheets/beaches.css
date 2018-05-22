@@ -58,6 +58,8 @@ hr {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
+    border: 1px solid #EBE2E0;
+    border-radius: 5px;
     
 }
 
