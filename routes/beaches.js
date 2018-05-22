@@ -156,6 +156,7 @@ app.put("/beaches/:id", middleware.checkBeachOwnership, upload.single("beach[ima
                         return res.redirect("back")
                     }
                 }
+            beach.location = req.body.beach.location;
             beach.name = req.body.beach.name;
             beach.description = req.body.beach.description;
             beach.save();
