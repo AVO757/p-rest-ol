@@ -57,13 +57,15 @@ hr {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-gap: 1em;
-    margin-bottom: 20%;
+    margin-bottom: 70%;
+    border: 1px solid black;
 }
 
 .beach {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
+    border: 1px solid black;
     
 }
 
@@ -118,28 +120,17 @@ footer {
 footer .contact {
     display: grid;
     padding: 1% 0;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
 }
 
 footer .contact * {
     margin:0;
+    text-align: center;
     font-size: 80%;
 }
 
-footer .contact #created {
-    justify-self: end;
-}
-
-footer .contact #email {
-    justify-self: start;
-}
-
-footer .contact #location {
-    justify-self: end;
-}
-
 footer .contact #linkedIn {
-    justify-self: start;
     align-self: start;
 }
 
@@ -150,6 +141,44 @@ footer .contact #linkedIn {
     .beaches {
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: 40%;
+    }
+
+    /* footer */
+
+    footer {
+    grid-area: footer;
+    height: 100%;
+    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+    }
+
+    footer .contact {
+    display: grid;
+    padding: 1% 0;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    }
+
+    footer .contact * {
+    margin:0;
+    font-size: 80%;
+    }
+
+    footer .contact #created {
+    justify-self: end;
+    }
+
+    footer .contact #email {
+    justify-self: start;
+    }
+
+    footer .contact #location {
+    justify-self: end;
+    }
+
+    footer .contact #linkedIn {
+    justify-self: start;
+    align-self: start;
     }
 }
 

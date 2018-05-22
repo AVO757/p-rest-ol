@@ -29,15 +29,16 @@ i {
 .content {
     display: grid;
     grid-area: content;
-    grid-template-columns: 5% 1fr 1fr 1fr 5%;
+    grid-template-columns: 5% 1fr 1fr 5%;
     grid-template-rows: auto;
     grid-gap: 1em;
     grid-template-areas:
-    "header header header header header"
-    ". text-editors languages front-end-framework ."
-    ". server-side-language server-side-framework database ."
-    ". cloud-hosting extra . ."
-    "footer footer footer footer footer";
+    "header header header header"
+    ". text-editors languages  ."
+    ". front-end-framework server-side-language ."
+    ". server-side-framework database ."
+    ". cloud-hosting extra ."
+    "footer footer footer footer";
     padding-bottom: 10%;
     font-family: 'Roboto', sans-serif;
 }
@@ -185,7 +186,8 @@ footer {
 footer .contact {
     display: grid;
     padding: 1% 0;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
 }
 
 footer .contact * {
@@ -193,40 +195,75 @@ footer .contact * {
     font-size: 80%;
 }
 
-footer .contact #created {
-    justify-self: end;
-}
-
-footer .contact #email {
-    justify-self: start;
-}
-
-footer .contact #location {
-    justify-self: end;
-}
-
 footer .contact #linkedIn {
-    justify-self: start;
     align-self: start;
 }
 
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+    .content {
+    display: grid;
+    grid-area: content;
+    grid-template-columns: 5% 1fr 1fr 1fr 5%;
+    grid-template-rows: auto;
+    grid-gap: 1em;
+    grid-template-areas:
+    "header header header header header"
+    ". text-editors languages front-end-framework ."
+    ". server-side-language server-side-framework database ."
+    ". cloud-hosting extra . ."
+    "footer footer footer footer footer";
+    padding-bottom: 10%;
+    font-family: 'Roboto', sans-serif;
+    }
+
+    /* footer */
+
+    footer {
+    grid-area: footer;
+    height: 100%;
+    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+    }
+
+    footer .contact {
+    display: grid;
+    padding: 1% 0;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    }
+
+    footer .contact * {
+    margin:0;
+    font-size: 80%;
+    }
+
+    footer .contact #created {
+    justify-self: end;
+    }
+
+    footer .contact #email {
+    justify-self: start;
+    }
+
+    footer .contact #location {
+    justify-self: end;
+    }
+
+    footer .contact #linkedIn {
+    justify-self: start;
+    align-self: start;
+    }
+}
 
 /* Medium devices (tablets, 768px and up) */
 
 @media (min-width: 768px) {
+
     .content {
         display: grid;
         grid-template-columns: 15% 1fr 1fr 1fr 15%;
-        grid-template-rows: auto;
-        grid-gap: 1em;
-        grid-template-areas:
-        "header header header header header"
-        ". text-editors languages front-end-framework ."
-        ". server-side-language server-side-framework database ."
-        ". cloud-hosting extra . ."
-        "footer footer footer footer footer";
-        padding-bottom: 10%;
-        font-family: 'Roboto', sans-serif;
     }
 }
 
