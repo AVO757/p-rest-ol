@@ -204,18 +204,13 @@ footer .contact #linkedIn {
 
     .content {
     display: grid;
-    grid-area: content;
     grid-template-columns: 5% 1fr 1fr 1fr 5%;
-    grid-template-rows: auto;
-    grid-gap: 1em;
     grid-template-areas:
     "header header header header header"
     ". text-editors languages front-end-framework ."
     ". server-side-language server-side-framework database ."
     ". cloud-hosting extra . ."
     "footer footer footer footer footer";
-    padding-bottom: 10%;
-    font-family: 'Roboto', sans-serif;
     }
 
     /* footer */
@@ -270,20 +265,7 @@ footer .contact #linkedIn {
 /* Large devices (desktops, 992px and up) */
 
 @media (min-width: 992px) {
-    .content {
-        display: grid;
-        grid-template-columns: 15% 1fr 1fr 1fr 15%;
-        grid-template-rows: auto;
-        grid-gap: 1em;
-        grid-template-areas:
-        "header header header header header"
-        ". text-editors languages front-end-framework ."
-        ". server-side-language server-side-framework database ."
-        ". cloud-hosting extra . ."
-        "footer footer footer footer footer";
-        padding-bottom: 10%;
-        font-family: 'Roboto', sans-serif;
-    }
+    
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -292,15 +274,5 @@ footer .contact #linkedIn {
     .content {
         display: grid;
         grid-template-columns: 20% 1fr 1fr 1fr 20%;
-        grid-template-rows: auto;
-        grid-gap: 1em;
-        grid-template-areas:
-        "header header header header header"
-        ". text-editors languages front-end-framework ."
-        ". server-side-language server-side-framework database ."
-        ". cloud-hosting extra . ."
-        "footer footer footer footer footer";
-        padding-bottom: 10%;
-        font-family: 'Roboto', sans-serif;
     }
 }
