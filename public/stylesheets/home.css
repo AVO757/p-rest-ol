@@ -21,44 +21,42 @@ html, body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     margin-top: 10%;
-    display: grid;
+    margin-bottom: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* display: grid;
     grid-template-columns: 5% 1fr 5%;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 1fr 2fr 2fr 1fr 2fr;
     grid-template-areas:
     ". h1 ."
     ". h3 ."
     ". p1 ."
     ". p2 ."
-    ". link .";
+    ". link ."
+    ". . ."; */
 }
+
+
 
 
 h1 {
     grid-area: h1;
-    align-self: start;
-    border: 1px solid black;
+    margin-bottom: 5%;
 }
 
 h3 {
     grid-area: h3;
-    margin-bottom:10%;
-    align-self: start;
-    border: 1px solid black;
+    margin-bottom: 5%;
 }
 
 .p1 {
     grid-area: p1;
-    margin:0 10%;
-    margin-bottom:10%;
-    align-self: start;
-    border: 1px solid black;
+    margin:0 5%;
+    margin-bottom: 5%;
 }
 
 .p2 {
-    grid-area: p2;
-    margin-bottom:10%;
-    align-self: start;
-    border: 1px solid black;
+    grid-area: p2;;
 }
 
 #viewBeach {
@@ -113,29 +111,6 @@ footer .contact #linkedIn {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 
-    .content {
-    margin-bottom: 10%;
-}
-
-    h3 {
-    grid-area: h3;
-    margin-bottom:0;
-    align-self: start;
-    }
-
-    .p1 {
-        grid-area: p1;
-        margin:0 10%;
-        margin-bottom:0;
-        align-self: start;
-    }
-
-    .p2 {
-        grid-area: p2;
-        margin-bottom:0;
-        align-self: start;
-    }
-
     /* footer */
 
     footer {
@@ -179,13 +154,17 @@ footer .contact #linkedIn {
 
 @media (min-width: 768px) {
     .content {
-        grid-template-columns: 15% 1fr 15%;
-        
+        margin-left: 15%;
+        margin-right: 15%;
+        /* grid-template-columns: 15% 1fr 15%; */
     }
 }
 
 @media (min-width: 1200px) {
     .content {
-        grid-template-columns: 20% 1fr 20%;
+        margin-top: 5%;
+        margin-left: 20%;
+        margin-right: 20%;
+        /* grid-template-columns: 20% 1fr 20%; */
     }
 }
