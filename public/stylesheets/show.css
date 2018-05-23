@@ -59,6 +59,11 @@ i {
     font-size: 150%;
 }
 
+img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
 .beachLeftContent #author {
     font-family: 'Roboto', sans-serif;
     font-size: 80%;
