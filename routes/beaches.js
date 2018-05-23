@@ -81,7 +81,7 @@ app.post("/beaches", middleware.isLoggedIn, upload.single("beach[image]"), funct
         }
         var lat = data[0].latitude;
         var lng = data[0].longitude;
-        var location = data[0].formattedAddress;
+        var location = req.body.beach.location;
 
         // image upload
         cloudinary.uploader.upload(req.file.path, function (result) {
@@ -137,7 +137,8 @@ app.put("/beaches/:id", middleware.checkBeachOwnership, upload.single("beach[ima
         }
         req.body.beach.lat = data[0].latitude;
         req.body.beach.lng = data[0].longitude;
-        req.body.beach.location = data[0].formattedAddress;
+        // For accurate address
+        // req.body.beach.location = data[0].formattedAddress;
 
         // beach update and image update
         Beach.findById(req.params.id, async function (err, beach) {

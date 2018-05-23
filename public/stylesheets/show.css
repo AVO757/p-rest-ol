@@ -49,16 +49,19 @@ i {
 
 .beachLeftContent {
     grid-area: beachLeftContent;
-    /* border: 1px solid black; */
 }
 
 .beachRightContent {
     grid-area: beachRightContent;
-    /* border: 1px solid black; */
 }
 
-.beachLeftContent p {
+.beachLeftContent #location {
     font-size: 150%;
+}
+
+.beachLeftContent #author {
+    font-family: 'Roboto', sans-serif;
+    font-size: 80%;
 }
 
 .beachDescription {
