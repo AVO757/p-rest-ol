@@ -1,0 +1,66 @@
+.header {
+
+    &__btn {
+        font-size: 1.7rem;
+        text-decoration: none;
+        color: $color-grey-light-1;
+    }
+}
+
+
+.heading {
+
+    &--0 {
+        font-family: $font-tertiary;
+        font-size: 2.5rem;
+    }
+
+    &--1 {
+        font-size: 5rem;
+        margin: 2rem 0;
+    }
+
+    &--2 {
+        font-size: 3rem;
+        margin: 2rem 0;
+    }
+
+    &--3 {
+        color: white;
+        font-family: $font-tertiary;
+        font-size: 5rem;
+        margin: 2rem 0;
+    }
+
+}
+
+.para {
+
+    &--1 {
+        font-size: 1.7rem;
+        margin: 2rem 0;
+    }
+
+    &--2 {
+        font-size: 1.7rem;
+        margin-bottom: 4rem;
+    } 
+}
+
+.link {
+    color: $color-grey-light-1;
+    text-decoration: none;
+}
+
+.btn {
+    font-size: 1.7rem;
+    margin: 2rem 0;
+}
+
+.footer {
+    font-size: 1.3rem;
+    a {
+        text-decoration: none;
+        color: $color-grey-light-1;
+    }
+}

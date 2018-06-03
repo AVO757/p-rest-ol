@@ -1,0 +1,31 @@
+.homepage {
+  background-color: aquamarine; }
+  .homepage header {
+    grid-column: 1/-1; }
+  .homepage__intro {
+    grid-column: intro-start/intro-end; }
+  .homepage__feature {
+    grid-column: feature-start/feature-end; }
+  .homepage .footer {
+    grid-column: 1/-1; }
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-size: 1.4rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300; }
+
+.homepage {
+  display: grid;
+  grid-template-columns: [intro-start] 65% [intro-end feature-start] 35% [feature-end];
+  grid-template-rows: 1fr 80vh repeat(2, min-content); }
