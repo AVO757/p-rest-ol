@@ -3,12 +3,14 @@
 @import "abstracts/typography";
 @import "abstracts/mixins";
 
+// BASE
+@import "base/animations";
+@import "base/base";
+
 // COMPONENTS
 @import "components/buttons";
-@import "components/videos";
 
 // LAYOUT
+@import "pages/beaches";
 @import "pages/homepage";
 
-// BASE
-@import "base/base";

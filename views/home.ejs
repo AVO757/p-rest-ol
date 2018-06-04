@@ -18,22 +18,21 @@
         <header class="header">
 
             <div class="header__nav--center">
-                <a class="header__btn" href="/beaches">Beaches</a>
-                <a class="header__btn heading--0" href="/">Project REST
-                </a>
-                <a class="header__btn" href="/about/Project-REST">About</a>
+                <a class="header__btn link--1" href="/beaches">Beaches</a>
+                <a class="header__btn heading--0 link--1" href="/">Project REST</a>
+                <a class="header__btn link--1" href="/about/Project-REST">About</a>
                 
             </div>
 
             <div class="header__nav--right">
                 <% if(!currentUser) {%>
-                    <a class="header__btn" href="/login">Login</a>
-                    <a class="header__btn" href="/register">Sign Up</a>
+                    <a class="header__btn link--1" href="/login">Login</a>
+                    <a class="header__btn link--1" href="/register">Sign Up</a>
                     <% } else { %>
                         <a class="header__btn" href="#" onclick="return false">Signed in as
                             <%= currentUser.username %>
                         </a>
-                        <a class="header__btn" href="/logout">Logout</a>
+                        <a class="header__btn link--1" href="/logout">Logout</a>
                         <% } %>
             </div>
                 
@@ -70,7 +69,7 @@
                     by registering (no email required) and then post/edit/delete your favourite beaches. Also, You can add comments. To know
                     more about what tools/technologies I used to create
                     <span>Project REST</span>,
-                    <a class="link" href="/about/project-REST">click here</a>.</p>
+                    <a class="link link--1" href="/about/project-REST">click here</a>.</p>
                     
                 </div>
         </div>
@@ -88,16 +87,18 @@
 
                 <div class="feature__text">
                     <h1 class="heading--3">Project REST</h1>
-                    <a class="btn--blue link" href="beaches">View all beaches</a>
+                    <a class="btn btn--blue link" href="beaches">View all beaches</a>
                 </div>
         </div>
 
 
         <footer class="footer">
-            <p>Created by Alexander Van Oers</p>
-            <p>vo.c.alexander@gmail.com</p>
-            <a href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
-            <p>London, UK</p>
+            <div class="footer__content">
+                <p>Created by Alexander Van Oers</p>
+                <p>vo.c.alexander@gmail.com</p>
+                <a class="link--1" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p>London, UK</p>
+            </div>
         </footer>
     </div>
 

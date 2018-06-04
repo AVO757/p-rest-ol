@@ -1,26 +1,42 @@
 .homepage {
     display: grid;
     grid-template-columns: [intro-start] 70% [intro-end feature-start]  30% [feature-end];
-    grid-template-rows: 9vh 85vh repeat(2, min-content);
+    grid-template-rows: 9vh minmax(85vh, min-content) min-content;
+
+    @media only screen and (max-width: $bp-large) {
+        grid-template-rows: 9vh minmax(50vh, min-content) repeat(2,minmax(1fr, min-content)) ;
+        
+    }
+
+    
 }
 
 .header {
     grid-column: 1/-1;
     background-color: $color-primary-dark;
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(11, minmax(1fr, max-content));
+    grid-template-rows: 9vh;
+    align-items: center;
+    // position: relative;
     
 
     &__nav {
 
         &--center {
-            @include center;
+            // @include center;
+            grid-column: 5/8;
+            justify-self: center;
         }
 
         &--right {
-            position: absolute;
-            top: 50%;
-            left: 90%;
-            transform: translate(-50%, -50%);
+            // position: absolute;
+            // top: 50%;
+            // left: 80%;
+            // transform: translate(-50%, -50%);
+            grid-column: 10/12;
+            justify-self: start;
+
         }
     }
 
@@ -52,12 +68,30 @@
     grid-template-columns: 10% minmax(14rem,  max-content) 10%;
     text-align: center;
     align-content: center;
+    color: $color-grey-light-1;
+
+    .heading--1 {
+        animation: moveInLeft 2s ease-out;
+    }
+
+    .heading--2 {
+        animation: moveInRight 2s ease-out;
+    }
+
+    p {
+        animation: moveInBottom 2s ease-out;
+    }
 
 
 
     &__text {
         grid-column: 2/3;
-        color: $color-grey-light-1;
+    }
+
+    @media only screen and (max-width: $bp-large) {
+        grid-column: 1/-1;
+        grid-row: 2/3;
+
     }
         
 }
@@ -98,14 +132,36 @@
         align-self: center;
         justify-self: center;
     }
+
+    @media only screen and (max-width: $bp-large) {
+        grid-column: 1/-1;
+        grid-row: 3/4;
+
+        &__text {
+            padding: 10rem 0;
+        }
+
+    }
+
 }
 
 .footer {
     grid-column: 1/-1;
+    
     background-color: $color-secondary;
     color: $color-grey-light-1;
     padding: 3rem;
     text-align: center;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        justify-items: center;
+    }
+
+    @media only screen and (max-width: $bp-large) {
+        grid-column: 1/-1;
+        grid-row: 4/5;
+
+    }
 }

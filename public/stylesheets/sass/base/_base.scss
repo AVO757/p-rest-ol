@@ -1,3 +1,24 @@
+
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em; // 1200px/16px
+$bp-large: 56.25em; // 900px - tablet landscape
+
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+
+    @media only screen and (max-width: $bp-largest) {
+        font-size: 50%;
+    }
+}
+
+body {
+    font-family: $font-primary;
+    font-weight: 300;
+}
+
 *,
 *::before,
 *::after {
@@ -6,12 +27,3 @@
     box-sizing: inherit;
 }
 
-html {
-    box-sizing: border-box;
-    font-size: 62.5%;
-}
-
-body {
-    font-family: $font-primary;
-    font-weight: 300;
-}
