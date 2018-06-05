@@ -1,0 +1,41 @@
+@mixin navbar {
+
+    .header {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    background-color: $color-primary-dark;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: 9vh;
+    align-items: center;
+    
+
+    &__nav {
+
+        &--center {
+            grid-column: 5/8;
+            justify-self: center;
+        }
+
+        &--right {
+            grid-column: 10/12;
+            justify-self: start;
+
+        }
+    }
+
+    &__btn {
+
+        &:not(:last-child) {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        &:not(:first-child) {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+
+    }   
+}

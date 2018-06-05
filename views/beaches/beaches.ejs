@@ -11,91 +11,98 @@
 
 <body>
 
-    <div>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <a class="navbar-brand" href="/">Project REST
-                <i class="fas fa-anchor"></i>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/beaches">Beaches</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about/Project-REST">About</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <% if(!currentUser) {%>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register">Sign Up</a>
-                        </li>
-                        <% } else { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="return false">Signed in as
-                                    <%= currentUser.username %>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/logout">Logout</a>
-                            </li>
-                            <% } %>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <div class="beaches-page">
 
+        <!-- NAVBAR -->
 
-    <!-- flash messages -->
-    <div class="container" id="flash">
-        <% if(error && error.length > 0) {%>
-            <div class="alert alert-warning" role="alert">
-                <%=error%>
+        <header class="header">
+            <div class="header__nav--center">
+                <a class="header__btn link--1" href="/beaches">Beaches</a>
+                <a class="header__btn heading--0 link--1" href="/">Project REST</a>
+                <a class="header__btn link--1" href="/about/Project-REST">About</a>
+        
             </div>
-        <% } %>
-        <% if(success && success.length > 0) {%>
-            <div class="alert alert-success" role="alert">
-                <%=success%>
+        
+            <div class="header__nav--right">
+                <% if(!currentUser) {%>
+                    <a class="header__btn link--1" href="/login">Login</a>
+                    <a class="header__btn link--1" href="/register">Sign Up</a>
+                    <% } else { %>
+                        <a class="header__btn" href="#" onclick="return false">Signed in as
+                            <%= currentUser.username %>
+                        </a>
+                        <a class="header__btn link--1" href="/logout">Logout</a>
+                        <% } %>
             </div>
-        <% } %>
-    </div>
-
-    
-
-    <div class="grid">
-        <div class="content">
-            <div class="header">
-                <h1>Wonderful beaches</h1>
-                <hr>
-                <a href="/beaches/new">Create a new beach</a>
-            </div>
-            <div class="beaches">
-                <% beaches.forEach(function(beach) { %>
-                    <div class=" beach">
-                        <img width="50" height="50" src="<%=beach.image%>">
-                        <h4 class="name"><%=beach.name%></h4>
-                        <p class="location font-weight-light"><%=beach.location%></p>
-                        <a class="link" href="/beaches/<%=beach._id%>">View beach</a>
+        
+        
+            <!-- flash messages -->
+            <div id="flash">
+                <% if(error && error.length > 0) {%>
+                    <div role="alert">
+                        <%=error%>
                     </div>
-                <%});%>
+                    <% } %>
+                <% if(success && success.length > 0) {%>
+                    <div role="alert">
+                        <%=success%>
+                    </div>
+                    <% } %>
+        
             </div>
-        </div>
-        <footer>
-            <div class="container contact">
-                <p id="email">vo.c.alexander@gmail.com</p>
-                <p id="created">Created by Alexander Van Oers</p>
-                <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
-                <p id="location">London, UK</p>
+        </header>
+
+        <!-- BEACHES -->
+
+        <section class="beaches">
+
+                <div class="beaches__intro">
+                    <h1 class="heading--1">Wonderful beaches</h1>
+                    <a class="btn btn--1 link" href="/beaches/new">Post a new beach</a>
+                </div>
+                <video class="beaches__video" autoplay muted loop>
+                    <source src="https://coverr.co/s3/mp4/Heaven.mp4" type="video/mp4">
+                    <source src="https://coverr.co/s3/mp4/Heaven.webm" type="video/webm"> Your browser is not supported!
+                </video>
+
+            <div class="beaches__content">
+            
+                <div class="beaches__posts">
+            
+                    <% beaches.forEach(function(beach) { %>
+                        <div class="beaches__item">
+                            <img width="100" height="100" src="<%=beach.image%>">
+                            <h4>
+                                <%=beach.name%>
+                            </h4>
+                            <p>
+                                <%=beach.location%>
+                            </p>
+                            <a class="link link--2" href="/beaches/<%=beach._id%>">View beach</a>
+                        </div>
+                        <%});%>
+                </div>
+            </div>
+
+        </section>
+        
+        
+        
+
+        <!-- FOOTER -->
+        
+        <footer class="footer">
+            <div class="footer__content">
+                <p>Created by Alexander Van Oers</p>
+                <p>vo.c.alexander@gmail.com</p>
+                <a class="link--1" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p>London, UK</p>
             </div>
         </footer>
+            
     </div>
-    
+        
+        
+           
 
-<%include ../partials/footer %>
+    

@@ -7,23 +7,7 @@
         transition: all .2s;
     }
 
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem rgba($color-grey-light-1, .2);
-        -moz-outline-radius: 5px;
-        outline-color: $color-grey-light-1;
-        outline-style: solid;
-        outline-width: 3px;
-        outline-offset: 5px;
-        
-        
-
-        &::after {
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0;
-            
-        }
-    }
+    
 
     &:active,
     &:focus {
@@ -32,12 +16,52 @@
         box-shadow: 0 .5rem 1rem rgba($color-grey-light-1,.2);
     }
 
-    &--blue {
+    &--1 {
         background-color: $color-secondary;
         border: 1px solid $color-secondary;
         border-radius: 5px;
         padding: 1rem 2rem;
         font-size: 1.7rem;
+
+        &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-grey-light-1, .2);
+        -moz-outline-radius: 5px;
+        outline-color: $color-grey-light-1;
+        outline-style: solid;
+        outline-width: 3px;
+        outline-offset: 5px;
+        
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+                
+            }
+        }
+    }
+
+    &--2 {
+        background-color: $color-secondary;
+        border: 1px solid $color-secondary;
+        border-radius: 5px;
+        padding: 1rem 2rem;
+        font-size: 1.7rem;
+
+        &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-grey-light-1, .2);
+        -moz-outline-radius: 5px;
+        outline-color: $color-primary;
+        outline-style: solid;
+        outline-width: 3px;
+        outline-offset: 5px;
+        
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+                
+            }
+        }
     }
 
 }
@@ -47,9 +71,14 @@
     color: $color-grey-light-1;
     text-decoration: none;
 
+    transition: all .2s;
+
     &--1:hover {
-        border-bottom: 1px solid $color-grey-light-1;
-        
+        border-bottom: 2px solid $color-grey-light-1;
+    }
+
+    &--2:hover {
+        background-color: $color-primary-dark;
     }
 }
 
