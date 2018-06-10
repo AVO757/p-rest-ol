@@ -3,96 +3,77 @@
 
 <head>
     <title>Project-REST</title>
-    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/form.css">
-    <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nunito|Rancho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
 </head>
 
 <body>
 
-        <div>
-            <nav class="navbar navbar-expand-sm navbar-light bg-light">
-                <a class="navbar-brand" href="/">Project REST
-                    <i class="fas fa-anchor"></i>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/beaches">Beaches</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about/Project-REST">About</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <% if(!currentUser) {%>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/register">Sign Up</a>
-                            </li>
-                            <% } else { %>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" onclick="return false">Signed in as
-                                        <%= currentUser.username %>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/logout">Logout</a>
-                                </li>
-                                <% } %>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-
-        <!-- flash messages -->
-        <div class="container" id="flash">
-            <% if(error && error.length > 0) {%>
-                <div class="alert alert-warning" role="alert">
-                    <%=error%>
-                </div>
-                <% } %>
-                    <% if(success && success.length > 0) {%>
-                        <div class="alert alert-success" role="alert">
-                            <%=success%>
-                        </div>
+    <div class="form-page">
+    
+        <!-- NAVBAR -->
+    
+        <header class="header">
+            <div class="header__nav--center">
+                <a class="header__btn link--1" href="/beaches">Beaches</a>
+                <a class="header__btn heading--0 link--1" href="/">Project REST</a>
+                <a class="header__btn link--1" href="/about/Project-REST">About</a>
+    
+            </div>
+    
+            <div class="header__nav--right">
+                <% if(!currentUser) {%>
+                    <a class="header__btn link--1" href="/login">Login</a>
+                    <a class="header__btn link--1" href="/register">Sign Up</a>
+                    <% } else { %>
+                        <a class="header__btn" href="#" onclick="return false">Signed in as
+                            <%= currentUser.username %>
+                        </a>
+                        <a class="header__btn link--1" href="/logout">Logout</a>
                         <% } %>
-        </div>
+            </div>
+    
+    
+            <!-- flash messages -->
+            <div class="flash" id="flash">
+                <% if(error && error.length > 0) {%>
+                    <div class="alert alert-warning" role="alert">
+                        <%=error%>
+                    </div>
+                    <% } %>
+                        <% if(success && success.length > 0) {%>
+                            <div class="alert alert-success" role="alert">
+                                <%=success%>
+                            </div>
+                            <% } %>
+            </div>
+    
+        </header>
 
-        <div class="grid">
-            <div class="content">
-                <div class="card-body container form">
-                    <h2 class="card-title">Login</h2>
-                    <hr>
+            <!-- FORM -->
+        
+                <div class="form-content">
+                    <h2 class="form__title heading--2">Login</h2>
                     <form action="/login" method="POST">
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input class="form-control" type="text" name="username">
+                        <div class="form__details">
+                            <input type="text" name="username">
+                            <input type="password" name="password">
+                            <input class="btn btn--6 link" type="submit" value="Login">
                         </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input class="form-control" type="password" name="password">
-                        </div>
-                        <input class="btn btn-primary float-right" type="submit" value="Login">
                     </form>
                 </div>
-            </div>
-            <footer>
-                <div class="container contact">
-                    <p id="email">vo.c.alexander@gmail.com</p>
-                    <p id="created">Created by Alexander Van Oers</p>
-                    <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
-                    <p id="location">London, UK</p>
-                </div>
-            </footer>
-        </div>
 
-<%include ../partials/footer %>
+        <!-- FOOTER -->
+        
+        <footer class="footer">
+            <div class="footer__content">
+                <p>Created by Alexander Van Oers</p>
+                <p>vo.c.alexander@gmail.com</p>
+                <a class="link--1" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p>London, UK</p>
+            </div>
+        </footer>
+    </div>

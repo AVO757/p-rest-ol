@@ -1,5 +1,7 @@
 .btn {
 
+    transition: all .2s;
+
     &,
     &:link,
     &:visited {
@@ -64,21 +66,174 @@
         }
     }
 
+    &--3 {
+        border: 1px solid $color-red;
+        border-radius: 5px;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+
+        background-color: transparent;
+        color: $color-red;
+        font-family: $font-primary;
+        border: 1px solid $color-red;
+        cursor: pointer;
+
+            &:hover {
+                color: $color-grey-light-1;
+                background-color: $color-red;
+                outline-color: $color-red;
+                -moz-outline-radius: 5px;
+                outline-style: solid;
+                outline-width: 3px;
+                outline-offset: 5px;
+            }
+    }
+
+    &--4 {
+        border: 1px solid $color-blue;
+        background-color: transparent;
+        border-radius: 5px;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        color: $color-blue;
+        text-decoration: none;
+
+        &:hover {
+        box-shadow: 0 1rem 2rem rgba(black, .2);
+        -moz-outline-radius: 5px;
+        outline-color: $color-blue;
+        outline-style: solid;
+        outline-width: 3px;
+        outline-offset: 5px;
+        background-color: $color-blue;
+        color: $color-grey-light-1;
+        
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+                
+            }
+        }
+    }
+
+    &--5 {
+        background-color: $color-primary;
+        border: 1px solid $color-primary;
+        border-radius: 5px;
+        padding: 1rem 2rem;
+        font-size: 1.7rem;
+
+        &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-grey-light-1, .2);
+        -moz-outline-radius: 5px;
+        outline-color: $color-primary;
+        outline-style: solid;
+        outline-width: 3px;
+        outline-offset: 5px;
+        
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+                
+            }
+        }
+    }
+
+    &--6 {
+        background-color: $color-blue;
+        border: 1px solid $color-blue;
+        border-radius: 5px;
+        padding: 1rem 2rem;
+        font-size: 1.7rem;
+
+        &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-grey-light-1, .2);
+        -moz-outline-radius: 5px;
+        outline-color: $color-grey-light-1;
+        outline-style: solid;
+        outline-width: 3px;
+        outline-offset: 5px;
+        
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+                
+            }
+        }
+    }
+
+    &--7 {
+        background-color: $color-red;
+        border: 1px solid $color-red;
+        border-radius: 5px;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+
+        &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-grey-light-1, .2);
+        -moz-outline-radius: 5px;
+        outline-color: $color-grey-light-1;
+        outline-style: solid;
+        outline-width: 3px;
+        outline-offset: 5px;
+        
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+                
+            }
+        }
+    }
+
+    &--8 {
+        background-color: $color-green;
+        border: 1px solid $color-green;
+        border-radius: 5px;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+
+        &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-grey-light-1, .2);
+        -moz-outline-radius: 5px;
+        outline-color: $color-grey-light-1;
+        outline-style: solid;
+        outline-width: 3px;
+        outline-offset: 5px;
+        
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+                
+            }
+        }
+    }
 }
 
 .link {
-
-    color: $color-grey-light-1;
     text-decoration: none;
-
+    color: $color-grey-light-1;
     transition: all .2s;
 
     &--1:hover {
+        
         border-bottom: 2px solid $color-grey-light-1;
     }
 
     &--2:hover {
         background-color: $color-primary-dark;
     }
+
+    &--3 {
+        color: $color-blue;
+    }
+
+    &--4 {
+        color: $color-red;
+    }
+
 }
 

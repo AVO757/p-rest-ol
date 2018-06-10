@@ -4,8 +4,12 @@
     grid-template-rows: 9vh minmax(85vh, min-content) min-content;
 
     @media only screen and (max-width: $bp-large) {
-        grid-template-rows: 9vh minmax(50vh, min-content) repeat(2,minmax(1fr, min-content)) ;
+        grid-template-rows: 9vh minmax(50vh, min-content) repeat(2,minmax(1fr, min-content));
         
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-rows: 13vh minmax(85vh, min-content) min-content;
     }
 
     
@@ -20,7 +24,7 @@
     background-size: cover;
     background-image: 
     linear-gradient(rgba($color-secondary, .9), rgba($color-secondary, .9)), 
-    url(../img/homepage.jpg);
+    url(../img/bg-0.jpg);
 
     display: grid;
     grid-template-columns: 10% minmax(14rem,  max-content) 10%;
@@ -74,6 +78,10 @@
         height: 100%;
         object-fit: cover;
         z-index: -2;
+
+        @supports (-ms-ime-align:auto) {
+            display: none;
+        }
     }
 
     &__bg {
@@ -81,6 +89,13 @@
         grid-column: 1/2;
         background-color: rgba($color-primary, .3);
         z-index: -1;
+
+        @supports (-ms-ime-align:auto) {
+            background-image: linear-gradient(rgba($color-primary, .3), 
+            rgba($color-primary, .3)), url(../img/bg-4.jpg);
+            background-position: center;
+            background-size: cover;
+        }
     }
 
     &__text {

@@ -2,138 +2,130 @@
 <html>
 <head>
     <title>Project-REST</title>
-    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/show.css">
-    <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nunito|Rancho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
 </head>
 <body>
 
-    <div>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <a class="navbar-brand" href="/">Project REST
-                <i class="fas fa-anchor"></i>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/beaches">Beaches</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about/Project-REST">About</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <% if(!currentUser) {%>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register">Sign Up</a>
-                        </li>
-                        <% } else { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="return false">Signed in as
-                                    <%= currentUser.username %>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/logout">Logout</a>
-                            </li>
-                            <% } %>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-    <!-- flash messages -->
-    <div class=" flash container">
-        <% if(error && error.length > 0) {%>
-            <div class="alert alert-warning" role="alert">
-                <%=error%>
-            </div>
-        <% } %>
-        <% if(success && success.length > 0) {%>
-            <div class="alert alert-success" role="alert">
-                <%=success%>
-            </div>
-        <% } %>
-    </div>
-
-
-    <div class="grid">
-        <div class="content">
-            <h1 class="beachName">
-                <%=beach.name%>
-            </h1>
-            <div class="beachLeftContent card">
-                <img class="card-img-top" src="<%=beach.image%>">
-                <div class="card-subtitle card-body">
-                    <p id="location"><%=beach.location%></p>
-                    <p id="author">Beach posted by <%=beach.author.username%></p>
-                </div>
+    <div class="show-page">
+        <!-- NAVBAR -->
+        
+        <header class="header">
+            <div class="header__nav--center">
+                <a class="header__btn link--1" href="/beaches">Beaches</a>
+                <a class="header__btn heading--0 link--1" href="/">Project REST</a>
+                <a class="header__btn link--1" href="/about/Project-REST">About</a>
+        
             </div>
         
-            <div class="beachRightContent">
-                <div class="rounded" id="map"></div>
+            <div class="header__nav--right">
+                <% if(!currentUser) {%>
+                    <a class="header__btn link--1" href="/login">Login</a>
+                    <a class="header__btn link--1" href="/register">Sign Up</a>
+                    <% } else { %>
+                        <a class="header__btn" href="#" onclick="return false">Signed in as
+                            <%= currentUser.username %>
+                        </a>
+                        <a class="header__btn link--1" href="/logout">Logout</a>
+                        <% } %>
             </div>
         
-            <div class="beachDescription border rounded card-body bg-light">
-                <p>
-                    <%=beach.description%>
+        
+            <!-- flash messages -->
+            <div class="flash" id="flash">
+                <% if(error && error.length > 0) {%>
+                    <div class="alert alert-warning" role="alert">
+                        <%=error%>
+                    </div>
+                <% } %>
+                <% if(success && success.length > 0) {%>
+                    <div class="alert alert-success" role="alert">
+                        <%=success%>
+                    </div>
+                <% } %>
+            </div>
+
+        </header>
+
+        <!-- MAIN CONTENT -->
+
+        <section class="beach">
+
+            <div class="beach-item">
+
+                <img src="<%=beach.image%>">
+                <h1>
+                    <%=beach.name%>
+                </h1>
+                <p class="beach-location" id="location">
+                    <%=beach.location%>
                 </p>
+                <p class="beach-author" id="author">Beach posted by
+                    <%=beach.author.username%>
+                </p>
+                
             </div>
-        
-        
+
+            <div class="beach-map" id="map"></div>
+
+            <p class="beach-description"><%=beach.description%></p>
+
+
             <!-- hide buttons for unauthorized users -->
-            <div class="beachOptions">
-                <% if(currentUser && beach.author.id.equals(currentUser._id)) {%>
-                    <a class="btn btn-success float-right" href="/beaches/<%=beach._id%>/edit">Edit beach</a>
-                    <form action="/beaches/<%=beach._id%>?_method=DELETE" method="POST">
-                        <input class="btn btn-outline-danger" type="submit" value="Delete beach">
-                    </form>
-                    <% } %>
-            </div>
-        
-        
-            <div class="beachCommentSection">
-                <h5 class="card-header">Leave here your thoughts
-                    <a class="float-right" href="/beaches/<%=beach._id%>/comments/new">Add comment</a>
-                </h5>
-                <%beach.comments.forEach(function(comment) {%>
-                    <div class=" comment border rounded card-body">
-                        <p class=" commentDescription">
-                            <%=comment.text%>
-                        </p>
-                        <p class=" commentAuthor">
+            <% if(currentUser && beach.author.id.equals(currentUser._id)) {%>
+                <a class="beach-edit btn btn--4 link--3" href="/beaches/<%=beach._id%>/edit">Edit beach</a>
+                <form class="beach-delete" action="/beaches/<%=beach._id%>?_method=DELETE" method="POST">
+                    <input class="btn--3 btn" type="submit" value="Delete beach">
+                </form>
+            <% } %>
+
+
+            <!-- COMMENT SECTION -->
+
+            <div class="beach-comments">
+                
+                <div class="comments__navbar">&nbsp;</div>
+                <h5 class="comments__header heading--4">Leave here your thoughts</h5>
+                <a class="comments__link link btn--5" href="/beaches/<%=beach._id%>/comments/new">Add comment</a>
+                
+                
+                
+                <div class="comment__item">
+                    <%beach.comments.forEach(function(comment) {%>
+                        <p class="comment__author">
                             <%=comment.author.username%>
                         </p>
-                        <div class="commentOptions">
+                        <p class="comment__text">
+                            <%=comment.text%>
+                        </p>
+
+                        <div class="comment__options">
                             <% if(currentUser && comment.author.id.equals(currentUser._id)) {%>
-                                <form action="/beaches/<%=beach._id%>/comments/<%=comment.id%>?_method=DELETE" method="POST">
-                                    <input class="btn btn-outline-danger float-right" type="submit" value="Delete">
+                                <form class="comment__delete" action="/beaches/<%=beach._id%>/comments/<%=comment.id%>?_method=DELETE" method="POST">
+                                    <input class="btn--3 btn" type="submit" value="Delete">
                                 </form>
-                                <a class="btn btn-warning" href="/beaches/<%=beach._id%>/comments/<%=comment._id%>/edit">Edit</a>
-                                <% } %>
+                                <a class="comment__edit btn btn--4 link--3" href="/beaches/<%=beach._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                            <% } %>
                         </div>
-                    </div>
                     <%})%>
+                </div>
             </div>
-        </div>
-        <footer>
-            <div class="container contact">
-                <p id="email">vo.c.alexander@gmail.com</p>
-                <p id="created">Created by Alexander Van Oers</p>
-                <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
-                <p id="location">London, UK</p>
+        </section>
+
+        <!-- FOOTER -->
+        
+        <footer class="footer">
+            <div class="footer__content">
+                <p>Created by Alexander Van Oers</p>
+                <p>vo.c.alexander@gmail.com</p>
+                <a class="link--1" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p>London, UK</p>
             </div>
         </footer>
+
     </div>
 
 
@@ -168,6 +160,3 @@
         }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIiL4vc95xxbrunoFJx1nq0g1pFKuQm04&callback=initMap"></script>
-
-
-<%include ../partials/footer %>

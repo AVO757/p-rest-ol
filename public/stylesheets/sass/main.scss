@@ -9,10 +9,17 @@
 
 // COMPONENTS
 @import "components/buttons";
-@import "components/footer";
-@import "components/navbar";
+@import "components/flash";
 
 // LAYOUT
-@import "pages/beaches";
+@import "layout/footer";
+@import "layout/navbar";
+
+// PAGES
+@import "pages/about";
+@import "pages/ch-beaches";
+@import "pages/form";
+@import "pages/fx-beaches";
 @import "pages/homepage";
+@import "pages/show";
 

@@ -3,9 +3,8 @@
 
 <head>
     <title>Project-REST</title>
-    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/form.css">
-    <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nunito|Rancho" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
@@ -13,100 +12,77 @@
 
 <body>
 
-    <div>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <a class="navbar-brand" href="/">Project REST
-                <i class="fas fa-anchor"></i>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/beaches">Beaches</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about/Project-REST">About</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <% if(!currentUser) {%>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register">Sign Up</a>
-                        </li>
-                        <% } else { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="return false">Signed in as
-                                    <%= currentUser.username %>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/logout">Logout</a>
-                            </li>
-                            <% } %>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <div class="form-page">
 
-    <!-- flash messages -->
-    <div class="container">
-        <% if(error && error.length > 0) {%>
-            <div class="alert alert-warning" role="alert">
-                <%=error%>
+        <!-- NAVBAR -->
+        
+        <header class="header">
+            <div class="header__nav--center">
+                <a class="header__btn link--1" href="/beaches">Beaches</a>
+                <a class="header__btn heading--0 link--1" href="/">Project REST</a>
+                <a class="header__btn link--1" href="/about/Project-REST">About</a>
+        
             </div>
-            <% } %>
+        
+            <div class="header__nav--right">
+                <% if(!currentUser) {%>
+                    <a class="header__btn link--1" href="/login">Login</a>
+                    <a class="header__btn link--1" href="/register">Sign Up</a>
+                    <% } else { %>
+                        <a class="header__btn" href="#" onclick="return false">Signed in as
+                            <%= currentUser.username %>
+                        </a>
+                        <a class="header__btn link--1" href="/logout">Logout</a>
+                        <% } %>
+            </div>
+        
+        
+            <!-- flash messages -->
+            <div class="flash" id="flash">
+                <% if(error && error.length > 0) {%>
+                    <div class="alert alert-warning" role="alert">
+                        <%=error%>
+                    </div>
+                    <% } %>
                 <% if(success && success.length > 0) {%>
                     <div class="alert alert-success" role="alert">
                         <%=success%>
                     </div>
-                    <% } %>
-    </div>
+                <% } %>
+            </div>
 
+        </header>
+        
+        <!-- FORM -->
 
-    <div class="grid">
-        <div class="content">
-            <div class="card-body container form">
-                <h2 class="card-title">Create beach</h2>
-                <hr>
+        <div class="form-content">
+            <h2 class="form__title heading--2">Post beach</h2>
+            
                 <form action="/beaches" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label>Beach name</label>
-                        <input class="form-control inputText" type="text" name="beach[name]">
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Image</label>
+                    <div class="form__details">
+                        <input type="text" name="beach[name]" placeholder="Beach name">
                         <input type="file" id="image" name="beach[image]" accept="image/*" required>
+                        <input type="text" name="beach[location]" id="location" placeholder="Location - (beach name, country)">
+                        <textarea name="beach[description]" id="description" placeholder="About the beach"></textarea>
+                        <input class="btn btn--6 link" type="submit" value="Post beach">
                     </div>
-                    <div class="form-group">
-                        <label>Location - (beach name, country)</label>
-                        <input class="form-control inputText" type="text" name="beach[location]" id="location">
-                    </div>
-                    <div class="form-group">
-                        <label>About the beach</label>
-                        <textarea class="form-control inputText" name="beach[description]" id="description"></textarea>
-                    </div>
-                    <input class="btn btn-primary float-right" type="submit">
                 </form>
+
+            <div class="form__options">
+                <a class="form__options--beaches btn btn--8 link" href="/beaches">View all beaches</a>
             </div>
-            <div class="container option">
-                <a class="btn btn-success float-right" href="/beaches">View all beaches</a>
-            </div>
+            
         </div>
-        <footer>
-            <div class="container contact">
-                <p id="email">vo.c.alexander@gmail.com</p>
-                <p id="created">Created by Alexander Van Oers</p>
-                <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
-                <p id="location">London, UK</p>
+        
+        
+        <!-- FOOTER -->
+        
+        <footer class="footer">
+            <div class="footer__content">
+                <p>Created by Alexander Van Oers</p>
+                <p>vo.c.alexander@gmail.com</p>
+                <a class="link--1" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                <p>London, UK</p>
             </div>
         </footer>
     </div>
-    
-    
-<%include ../partials/footer %>

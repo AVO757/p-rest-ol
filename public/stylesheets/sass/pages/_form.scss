@@ -1,0 +1,95 @@
+.form-page {
+    display: grid;
+    grid-template-columns: 30% 1fr 30%;
+    grid-template-rows: 9vh minmax(85vh, min-content) min-content;
+    background-image: 
+    linear-gradient(rgba(black, .3), rgba(black, .3)), 
+    url(../img/bg-1.jpg);
+    background-position: center;
+    background-size: cover;
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-rows: 13vh minmax(85vh, min-content) min-content;
+    }
+    
+
+    @include navbar;
+
+    .form-content {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content;
+
+
+        .form {
+            
+            &__title {
+                margin-top: 6rem;
+                color: $color-grey-light-1;
+            }
+
+            &__details {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: min-content;
+                margin-bottom: 1rem;
+
+                input {
+                    font-family: $font-primary;
+                    padding: 1rem;
+                    border-radius: .5rem;
+                    font-size: 1.5rem;
+                    
+                    
+
+                    &:not(:last-child) {
+                        grid-column: 1/2;
+                        margin-bottom: 4rem;
+                        background-color: $color-grey-light-3;
+                        
+                    }
+
+                    &:last-child {
+                        margin-top: 2rem;
+                        justify-self: end;
+                        align-self: start;
+                        cursor: pointer;
+                    }
+                }
+
+
+                textarea {
+                    font-family: $font-primary;
+                    background-color: $color-grey-light-3;
+                    padding: .5rem;
+                    border-radius: .5rem;
+                    font-size: 1.5rem;
+                    height: 8rem;
+                }
+
+                button {
+                    justify-self: end;
+                    align-self: start;
+                }
+
+                
+            }
+
+            &__options {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                margin-bottom: 7rem;
+
+                &--beaches {
+                    grid-column: 2/3;
+                    justify-self: end;
+                    align-self: start;
+                }
+            }
+        }
+    }
+
+    @include footer;
+}

@@ -3,7 +3,7 @@
 // RESPONSIVE BREAKPOINTS
 $bp-largest: 75em; // 1200px/16px
 $bp-large: 56.25em; // 900px - tablet landscape
-
+$bp-medium: 37.5rem; // 600px/12
 
 html {
     box-sizing: border-box;
@@ -12,6 +12,7 @@ html {
     @media only screen and (max-width: $bp-largest) {
         font-size: 50%;
     }
+
 }
 
 body {

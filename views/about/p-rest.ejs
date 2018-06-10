@@ -3,114 +3,96 @@
 
 <head>
     <title>Project-REST</title>
-    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/about-portfolio.css">
-    <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nunito|Rancho" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
 </head>
 
     <body>
-        <div>
-            <nav class="navbar navbar-expand-sm navbar-light bg-light">
-                <a class="navbar-brand" href="/">Project REST
-                    <i class="fas fa-anchor"></i>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/beaches">Beaches</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about/Project-REST">About</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <% if(!currentUser) {%>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/register">Sign Up</a>
-                            </li>
-                            <% } else { %>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" onclick="return false">Signed in as
-                                        <%= currentUser.username %>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/logout">Logout</a>
-                                </li>
-                                <% } %>
-                    </ul>
+        <!-- HEADER -->
+        
+        <div class="about-page">
+            <header class="header">
+        
+                <div class="header__nav--center">
+                    <a class="header__btn link--1" href="/beaches">Beaches</a>
+                    <a class="header__btn heading--0 link--1" href="/">Project REST</a>
+                    <a class="header__btn link--1" href="/about/Project-REST">About</a>
+        
                 </div>
-            </nav>
-        </div>
+        
+                <div class="header__nav--right">
+                    <% if(!currentUser) {%>
+                        <a class="header__btn link--1" href="/login">Login</a>
+                        <a class="header__btn link--1" href="/register">Sign Up</a>
+                        <% } else { %>
+                            <a class="header__btn" href="#" onclick="return false">Signed in as
+                                <%= currentUser.username %>
+                            </a>
+                            <a class="header__btn link--1" href="/logout">Logout</a>
+                            <% } %>
+                </div>
+        
+            </header>
 
-        <div class="grid">
+        <!-- MAIN CONTENT -->
+
             <div class="content">
-                <div class="header">
+                <div class="content__title">
                     <h1>About
-                        <span>Project-REST</span>
+                        <span class="">Project-REST</span>
                     </h1>
                     <p>Tools/technologies used to create this website</p>
                 </div>
             
-                <div class="text-editors">
+                <div class="item">
                     <h4>Text editors</h4>
                     <p>VSCode</p>
                     <p>Cloud9</p>
                 </div>
             
-                <div class="languages">
+                <div class="item">
                     <h4>Languages</h4>
-                    <p>HTML/CSS</p>
+                    <p>HTML</p>
+                    <p>CSS (SCSS)</p>
                     <p>javaScript</p>
                 </div>
-                <div class="front-end-framework">
-                    <h4>HTML/CSS Framework</h4>
-                    <p>Bootstrap 4</p>
-                </div>
-                <div class="server-side-language">
+                <div class="item">
                     <h4>Server Side Language</h4>
                     <p>Node.js</p>
                     <p>GIT</p>
                 </div>
-                <div class="server-side-framework">
+                <div class="item">
                     <h4>Server Side Framework</h4>
                     <p>Express</p>
                 </div>
-                <div class="database">
+                <div class="item">
                     <h4>Database</h4>
                     <p>MongoDB</p>
                 </div>
-                <div class="cloud-hosting">
+                <div class="item">
                     <h4>Cloud Hosting</h4>
                     <p>Heroku</p>
                     <p>mLab</p>
                 </div>
-                <div class="extra">
+                <div class="item">
                     <h4>Other techniques used</h4>
                     <p>CSS-Grid</p>
                     <p>RESTful routing</p>
                     <p>Responsive layout</p>
                 </div>
             </div>
-            <footer>
-                <div class="container contact">
-                    <p id="email">vo.c.alexander@gmail.com</p>
-                    <p id="created">Created by Alexander Van Oers</p>
-                    <a id="linkedIn" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
-                    <p id="location">London, UK</p>
-                </div>
+
+            <!-- FOOTER -->
             
+            <footer class="footer">
+                <div class="footer__content">
+                    <p>Created by Alexander Van Oers</p>
+                    <p>vo.c.alexander@gmail.com</p>
+                    <a class="link--1" href="https://www.linkedin.com/in/alexander-van-oers-3284b3124/">LinkedIn</a>
+                    <p>London, UK</p>
+                </div>
             </footer>
         </div>
-
-    <%include ../partials/footer %>
